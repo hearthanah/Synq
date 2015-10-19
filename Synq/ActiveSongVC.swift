@@ -9,6 +9,11 @@
 import UIKit
 
 class ActiveSongVC: UIViewController {
+    
+    @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var trackLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()

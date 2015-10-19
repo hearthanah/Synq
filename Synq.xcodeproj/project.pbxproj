@@ -19,6 +19,7 @@
 		C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C99AF3C31BD48630002DFF93 /* SongPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C99AF3C51BD4C208002DFF93 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchVC.swift; sourceTree = "<group>"; };
 		C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
 		C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPreviewVC.swift; sourceTree = "<group>"; };
+		C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				C99AF3871BD480FF002DFF93 /* AppDelegate.swift */,
 				C99AF38B1BD480FF002DFF93 /* Main.storyboard */,
+				C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */,
 				C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */,
 				C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */,
 				C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */,
@@ -274,6 +277,7 @@
 				C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */,
 				C99AF3901BD480FF002DFF93 /* Synq.xcdatamodeld in Sources */,
 				C99AF3BD1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift in Sources */,
+				C99AF3C51BD4C208002DFF93 /* SongTableViewCell.swift in Sources */,
 				C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */,
 				C99AF3881BD480FF002DFF93 /* AppDelegate.swift in Sources */,
 				C99AF3B91BD48264002DFF93 /* ActiveSongVC.swift in Sources */,

@@ -62,6 +62,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="HCn-kE-EXH" id="071-N7-wOz"/>
+                        <outlet property="image" destination="bkt-Lo-lWc" id="v0d-6u-L41"/>
+                        <outlet property="trackLabel" destination="nbY-cE-sc1" id="U0A-22-LIG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiJ-ve-VtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,7 +88,7 @@
                                 <rect key="frame" x="0.0" y="49" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongSearchCell" id="yXk-1n-q2J">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongSearchCell" id="yXk-1n-q2J" customClass="SongTableViewCell" customModule="Synq" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yXk-1n-q2J" id="4VU-um-EFZ">
@@ -117,11 +122,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQH-cb-7ge">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfA-SE-t8y">
-                                        <rect key="frame" x="21" y="8" width="242" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNm-9C-CTb">
                                         <rect key="frame" x="271" y="8" width="85" height="30"/>
                                         <color key="backgroundColor" red="0.67843137254901964" green="1" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,6 +132,11 @@
                                             <segue destination="v4q-zz-ULh" kind="show" identifier="ShowSearchResults" id="AGa-Wn-bl8"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfA-SE-t8y">
+                                        <rect key="frame" x="21" y="8" width="242" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -141,6 +146,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="gWs-KW-6tH" id="eVY-tL-4X6"/>
+                        <outlet property="searchTextField" destination="gfA-SE-t8y" id="tcg-ob-4fd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ff6-iq-8Nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,7 +198,7 @@
                                         <rect key="frame" x="0.0" y="115" width="375" height="560"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongResultCell" id="FJh-8v-7HR">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongResultCell" id="FJh-8v-7HR" customClass="SongTableViewCell" customModule="Synq" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FJh-8v-7HR" id="Ras-6c-Vg6">
@@ -233,6 +239,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="zPV-iI-2qO" id="Oau-In-7Wb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUv-99-5bx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,6 +289,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="Uy4-nt-g7q" id="MSm-oF-dRM"/>
+                        <outlet property="image" destination="e8F-xA-A7J" id="ILp-Ig-041"/>
+                        <outlet property="trackLabel" destination="qnw-bO-aMH" id="lK1-Ba-wvK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaX-di-rkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -294,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="QueuedCell" id="2DJ-ai-D3A">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="QueuedCell" id="2DJ-ai-D3A" customClass="SongTableViewCell" customModule="Synq" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2DJ-ai-D3A" id="ujD-Pl-mp9">
@@ -354,6 +368,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uu6-rR-hNb"/>
+        <segue reference="gEA-SV-46F"/>
     </inferredMetricsTieBreakers>
 </document>
