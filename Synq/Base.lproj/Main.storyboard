@@ -4,25 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--VetoedVC-->
-        <scene sceneID="RgB-li-C77">
-            <objects>
-                <viewController id="56g-3i-I5U" customClass="VetoedVC" customModule="Synq" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="T0Z-A5-iRZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Z4-Xb-qs7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JQc-Bv-J4R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Chd-oK-tnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1103.5" y="-914.5"/>
-        </scene>
         <!--Active Song-->
         <scene sceneID="6tv-N4-Ue6">
             <objects>

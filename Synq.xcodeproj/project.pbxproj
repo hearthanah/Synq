@@ -15,7 +15,6 @@
 		C99AF3A01BD480FF002DFF93 /* SynqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF39F1BD480FF002DFF93 /* SynqTests.swift */; };
 		C99AF3AB1BD480FF002DFF93 /* SynqUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3AA1BD480FF002DFF93 /* SynqUITests.swift */; };
 		C99AF3B91BD48264002DFF93 /* ActiveSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3BB1BD48418002DFF93 /* VetoedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BA1BD48418002DFF93 /* VetoedVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C99AF3BD1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */; settings = {ASSET_TAGS = (); }; };
@@ -54,7 +53,6 @@
 		C99AF3AA1BD480FF002DFF93 /* SynqUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynqUITests.swift; sourceTree = "<group>"; };
 		C99AF3AC1BD480FF002DFF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveSongVC.swift; sourceTree = "<group>"; };
-		C99AF3BA1BD48418002DFF93 /* VetoedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VetoedVC.swift; sourceTree = "<group>"; };
 		C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueuedPlaylistTableVC.swift; sourceTree = "<group>"; };
 		C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchVC.swift; sourceTree = "<group>"; };
 		C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */,
 				C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */,
 				C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */,
-				C99AF3BA1BD48418002DFF93 /* VetoedVC.swift */,
 				C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */,
 				C99AF3911BD480FF002DFF93 /* Assets.xcassets */,
 				C99AF3931BD480FF002DFF93 /* LaunchScreen.storyboard */,
@@ -277,7 +274,6 @@
 				C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */,
 				C99AF3901BD480FF002DFF93 /* Synq.xcdatamodeld in Sources */,
 				C99AF3BD1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift in Sources */,
-				C99AF3BB1BD48418002DFF93 /* VetoedVC.swift in Sources */,
 				C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */,
 				C99AF3881BD480FF002DFF93 /* AppDelegate.swift in Sources */,
 				C99AF3B91BD48264002DFF93 /* ActiveSongVC.swift in Sources */,
