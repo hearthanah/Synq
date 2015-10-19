@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="1103.5" y="-914.5"/>
         </scene>
-        <!--Active SongVC-->
+        <!--Active Song-->
         <scene sceneID="6tv-N4-Ue6">
             <objects>
                 <viewController id="CU2-La-eCD" customClass="ActiveSongVC" customModule="Synq" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,9 +34,49 @@
                     <view key="view" contentMode="scaleToFill" id="kxT-hO-0AS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-Fi-CZl">
+                                <rect key="frame" x="87" y="511" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.8484848484848484" green="0.8484848484848484" blue="0.8484848484848484" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="VETO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wf-m4-UfT">
+                                <rect key="frame" x="20" y="565" width="335" height="30"/>
+                                <color key="backgroundColor" red="0.72021667264544909" green="1" blue="0.34770856758194935" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="SYNQ LIST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;track&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbY-cE-sc1">
+                                <rect key="frame" x="20" y="381" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;artist&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCn-kE-EXH">
+                                <rect key="frame" x="20" y="410" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-Lo-lWc">
+                                <rect key="frame" x="37" y="99" width="300" height="250"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yEL-Fr-KGm"/>
+                    <navigationItem key="navigationItem" title="Active Song" id="yEL-Fr-KGm">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Nak-3k-aUu"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sao-6C-QDT">
+                            <connections>
+                                <segue destination="pcp-5Q-5GW" kind="show" identifier="ShowQueuedPlaylistTableVC" id="yDU-FW-BXa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiJ-ve-VtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +150,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2DJ-ai-D3A">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2DJ-ai-D3A" id="ujD-Pl-mp9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
