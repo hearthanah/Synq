@@ -2,8 +2,8 @@
 //  SynqTests.swift
 //  SynqTests
 //
-//  Created by Matthew Carpenter on 10/18/15.
-//  Copyright © 2015 Group11. All rights reserved.
+//  Created by Hanah Luong on 10/19/15.
+//  Copyright © 2015 cs378. All rights reserved.
 //
 
 import XCTest

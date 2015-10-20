@@ -7,76 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C99AF3881BD480FF002DFF93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3871BD480FF002DFF93 /* AppDelegate.swift */; };
-		C99AF38D1BD480FF002DFF93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99AF38B1BD480FF002DFF93 /* Main.storyboard */; };
-		C99AF3901BD480FF002DFF93 /* Synq.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99AF38E1BD480FF002DFF93 /* Synq.xcdatamodeld */; };
-		C99AF3921BD480FF002DFF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99AF3911BD480FF002DFF93 /* Assets.xcassets */; };
-		C99AF3951BD480FF002DFF93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99AF3931BD480FF002DFF93 /* LaunchScreen.storyboard */; };
-		C99AF3A01BD480FF002DFF93 /* SynqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF39F1BD480FF002DFF93 /* SynqTests.swift */; };
-		C99AF3AB1BD480FF002DFF93 /* SynqUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3AA1BD480FF002DFF93 /* SynqUITests.swift */; };
-		C99AF3B91BD48264002DFF93 /* ActiveSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3BD1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3C31BD48630002DFF93 /* SongPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */; settings = {ASSET_TAGS = (); }; };
-		C99AF3C51BD4C208002DFF93 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		ED6E04E21BD56A41009E4143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E11BD56A41009E4143 /* AppDelegate.swift */; };
+		ED6E04E41BD56A41009E4143 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E31BD56A41009E4143 /* ViewController.swift */; };
+		ED6E04E71BD56A41009E4143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6E04E51BD56A41009E4143 /* Main.storyboard */; };
+		ED6E04EA1BD56A41009E4143 /* Synq.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E81BD56A41009E4143 /* Synq.xcdatamodeld */; };
+		ED6E04EC1BD56A41009E4143 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6E04EB1BD56A41009E4143 /* Assets.xcassets */; };
+		ED6E04EF1BD56A41009E4143 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6E04ED1BD56A41009E4143 /* LaunchScreen.storyboard */; };
+		ED6E04FA1BD56A41009E4143 /* SynqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04F91BD56A41009E4143 /* SynqTests.swift */; };
+		ED6E05051BD56A7C009E4143 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6E05041BD56A7C009E4143 /* Spotify.framework */; settings = {ASSET_TAGS = (); }; };
+		ED6E05081BD5B800009E4143 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6E05071BD5B800009E4143 /* AVFoundation.framework */; };
+		ED6E050A1BD5B813009E4143 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6E05091BD5B813009E4143 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C99AF39C1BD480FF002DFF93 /* PBXContainerItemProxy */ = {
+		ED6E04F61BD56A41009E4143 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C99AF37C1BD480FF002DFF93 /* Project object */;
+			containerPortal = ED6E04D61BD56A41009E4143 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C99AF3831BD480FF002DFF93;
-			remoteInfo = Synq;
-		};
-		C99AF3A71BD480FF002DFF93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C99AF37C1BD480FF002DFF93 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C99AF3831BD480FF002DFF93;
+			remoteGlobalIDString = ED6E04DD1BD56A41009E4143;
 			remoteInfo = Synq;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C99AF3841BD480FF002DFF93 /* Synq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Synq.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C99AF3871BD480FF002DFF93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C99AF38C1BD480FF002DFF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C99AF38F1BD480FF002DFF93 /* Synq.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Synq.xcdatamodel; sourceTree = "<group>"; };
-		C99AF3911BD480FF002DFF93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C99AF3941BD480FF002DFF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C99AF3961BD480FF002DFF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C99AF39B1BD480FF002DFF93 /* SynqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C99AF39F1BD480FF002DFF93 /* SynqTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynqTests.swift; sourceTree = "<group>"; };
-		C99AF3A11BD480FF002DFF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C99AF3A61BD480FF002DFF93 /* SynqUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynqUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C99AF3AA1BD480FF002DFF93 /* SynqUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynqUITests.swift; sourceTree = "<group>"; };
-		C99AF3AC1BD480FF002DFF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveSongVC.swift; sourceTree = "<group>"; };
-		C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueuedPlaylistTableVC.swift; sourceTree = "<group>"; };
-		C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchVC.swift; sourceTree = "<group>"; };
-		C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
-		C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPreviewVC.swift; sourceTree = "<group>"; };
-		C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		ED6E04DE1BD56A41009E4143 /* Synq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Synq.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED6E04E11BD56A41009E4143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED6E04E31BD56A41009E4143 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED6E04E61BD56A41009E4143 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED6E04E91BD56A41009E4143 /* Synq.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Synq.xcdatamodel; sourceTree = "<group>"; };
+		ED6E04EB1BD56A41009E4143 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED6E04EE1BD56A41009E4143 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED6E04F01BD56A41009E4143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED6E04F51BD56A41009E4143 /* SynqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynqTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED6E04F91BD56A41009E4143 /* SynqTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynqTests.swift; sourceTree = "<group>"; };
+		ED6E04FB1BD56A41009E4143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED6E05041BD56A7C009E4143 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		ED6E05071BD5B800009E4143 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ED6E05091BD5B813009E4143 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		ED6E050B1BD5BDCE009E4143 /* Synq-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Synq-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C99AF3811BD480FF002DFF93 /* Frameworks */ = {
+		ED6E04DB1BD56A41009E4143 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED6E050A1BD5B813009E4143 /* SystemConfiguration.framework in Frameworks */,
+				ED6E05081BD5B800009E4143 /* AVFoundation.framework in Frameworks */,
+				ED6E05051BD56A7C009E4143 /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C99AF3981BD480FF002DFF93 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C99AF3A31BD480FF002DFF93 /* Frameworks */ = {
+		ED6E04F21BD56A41009E4143 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -86,73 +68,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C99AF37B1BD480FF002DFF93 = {
+		ED6E04D51BD56A41009E4143 = {
 			isa = PBXGroup;
 			children = (
-				C99AF3861BD480FF002DFF93 /* Synq */,
-				C99AF39E1BD480FF002DFF93 /* SynqTests */,
-				C99AF3A91BD480FF002DFF93 /* SynqUITests */,
-				C99AF3851BD480FF002DFF93 /* Products */,
+				ED6E05091BD5B813009E4143 /* SystemConfiguration.framework */,
+				ED6E05071BD5B800009E4143 /* AVFoundation.framework */,
+				ED6E04E01BD56A41009E4143 /* Synq */,
+				ED6E04F81BD56A41009E4143 /* SynqTests */,
+				ED6E04DF1BD56A41009E4143 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C99AF3851BD480FF002DFF93 /* Products */ = {
+		ED6E04DF1BD56A41009E4143 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C99AF3841BD480FF002DFF93 /* Synq.app */,
-				C99AF39B1BD480FF002DFF93 /* SynqTests.xctest */,
-				C99AF3A61BD480FF002DFF93 /* SynqUITests.xctest */,
+				ED6E04DE1BD56A41009E4143 /* Synq.app */,
+				ED6E04F51BD56A41009E4143 /* SynqTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C99AF3861BD480FF002DFF93 /* Synq */ = {
+		ED6E04E01BD56A41009E4143 /* Synq */ = {
 			isa = PBXGroup;
 			children = (
-				C99AF3871BD480FF002DFF93 /* AppDelegate.swift */,
-				C99AF38B1BD480FF002DFF93 /* Main.storyboard */,
-				C99AF3C41BD4C208002DFF93 /* SongTableViewCell.swift */,
-				C99AF3BE1BD485BD002DFF93 /* SongSearchVC.swift */,
-				C99AF3C01BD485E6002DFF93 /* SearchResultsVC.swift */,
-				C99AF3C21BD48630002DFF93 /* SongPreviewVC.swift */,
-				C99AF3BC1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift */,
-				C99AF3B81BD48264002DFF93 /* ActiveSongVC.swift */,
-				C99AF3911BD480FF002DFF93 /* Assets.xcassets */,
-				C99AF3931BD480FF002DFF93 /* LaunchScreen.storyboard */,
-				C99AF3961BD480FF002DFF93 /* Info.plist */,
-				C99AF38E1BD480FF002DFF93 /* Synq.xcdatamodeld */,
+				ED6E04E11BD56A41009E4143 /* AppDelegate.swift */,
+				ED6E04E31BD56A41009E4143 /* ViewController.swift */,
+				ED6E04E51BD56A41009E4143 /* Main.storyboard */,
+				ED6E04EB1BD56A41009E4143 /* Assets.xcassets */,
+				ED6E04ED1BD56A41009E4143 /* LaunchScreen.storyboard */,
+				ED6E04F01BD56A41009E4143 /* Info.plist */,
+				ED6E04E81BD56A41009E4143 /* Synq.xcdatamodeld */,
+				ED6E05061BD56A82009E4143 /* Frameworks */,
+				ED6E050B1BD5BDCE009E4143 /* Synq-Bridging-Header.h */,
 			);
 			path = Synq;
 			sourceTree = "<group>";
 		};
-		C99AF39E1BD480FF002DFF93 /* SynqTests */ = {
+		ED6E04F81BD56A41009E4143 /* SynqTests */ = {
 			isa = PBXGroup;
 			children = (
-				C99AF39F1BD480FF002DFF93 /* SynqTests.swift */,
-				C99AF3A11BD480FF002DFF93 /* Info.plist */,
+				ED6E04F91BD56A41009E4143 /* SynqTests.swift */,
+				ED6E04FB1BD56A41009E4143 /* Info.plist */,
 			);
 			path = SynqTests;
 			sourceTree = "<group>";
 		};
-		C99AF3A91BD480FF002DFF93 /* SynqUITests */ = {
+		ED6E05061BD56A82009E4143 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C99AF3AA1BD480FF002DFF93 /* SynqUITests.swift */,
-				C99AF3AC1BD480FF002DFF93 /* Info.plist */,
+				ED6E05041BD56A7C009E4143 /* Spotify.framework */,
 			);
-			path = SynqUITests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C99AF3831BD480FF002DFF93 /* Synq */ = {
+		ED6E04DD1BD56A41009E4143 /* Synq */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C99AF3AF1BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "Synq" */;
+			buildConfigurationList = ED6E04FE1BD56A41009E4143 /* Build configuration list for PBXNativeTarget "Synq" */;
 			buildPhases = (
-				C99AF3801BD480FF002DFF93 /* Sources */,
-				C99AF3811BD480FF002DFF93 /* Frameworks */,
-				C99AF3821BD480FF002DFF93 /* Resources */,
+				ED6E04DA1BD56A41009E4143 /* Sources */,
+				ED6E04DB1BD56A41009E4143 /* Frameworks */,
+				ED6E04DC1BD56A41009E4143 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -160,68 +138,47 @@
 			);
 			name = Synq;
 			productName = Synq;
-			productReference = C99AF3841BD480FF002DFF93 /* Synq.app */;
+			productReference = ED6E04DE1BD56A41009E4143 /* Synq.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C99AF39A1BD480FF002DFF93 /* SynqTests */ = {
+		ED6E04F41BD56A41009E4143 /* SynqTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C99AF3B21BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "SynqTests" */;
+			buildConfigurationList = ED6E05011BD56A41009E4143 /* Build configuration list for PBXNativeTarget "SynqTests" */;
 			buildPhases = (
-				C99AF3971BD480FF002DFF93 /* Sources */,
-				C99AF3981BD480FF002DFF93 /* Frameworks */,
-				C99AF3991BD480FF002DFF93 /* Resources */,
+				ED6E04F11BD56A41009E4143 /* Sources */,
+				ED6E04F21BD56A41009E4143 /* Frameworks */,
+				ED6E04F31BD56A41009E4143 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C99AF39D1BD480FF002DFF93 /* PBXTargetDependency */,
+				ED6E04F71BD56A41009E4143 /* PBXTargetDependency */,
 			);
 			name = SynqTests;
 			productName = SynqTests;
-			productReference = C99AF39B1BD480FF002DFF93 /* SynqTests.xctest */;
+			productReference = ED6E04F51BD56A41009E4143 /* SynqTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C99AF3A51BD480FF002DFF93 /* SynqUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C99AF3B51BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "SynqUITests" */;
-			buildPhases = (
-				C99AF3A21BD480FF002DFF93 /* Sources */,
-				C99AF3A31BD480FF002DFF93 /* Frameworks */,
-				C99AF3A41BD480FF002DFF93 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C99AF3A81BD480FF002DFF93 /* PBXTargetDependency */,
-			);
-			name = SynqUITests;
-			productName = SynqUITests;
-			productReference = C99AF3A61BD480FF002DFF93 /* SynqUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C99AF37C1BD480FF002DFF93 /* Project object */ = {
+		ED6E04D61BD56A41009E4143 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = Group11;
+				ORGANIZATIONNAME = cs378;
 				TargetAttributes = {
-					C99AF3831BD480FF002DFF93 = {
-						CreatedOnToolsVersion = 7.0;
+					ED6E04DD1BD56A41009E4143 = {
+						CreatedOnToolsVersion = 7.0.1;
 					};
-					C99AF39A1BD480FF002DFF93 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = C99AF3831BD480FF002DFF93;
-					};
-					C99AF3A51BD480FF002DFF93 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = C99AF3831BD480FF002DFF93;
+					ED6E04F41BD56A41009E4143 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = ED6E04DD1BD56A41009E4143;
 					};
 				};
 			};
-			buildConfigurationList = C99AF37F1BD480FF002DFF93 /* Build configuration list for PBXProject "Synq" */;
+			buildConfigurationList = ED6E04D91BD56A41009E4143 /* Build configuration list for PBXProject "Synq" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -229,37 +186,29 @@
 				en,
 				Base,
 			);
-			mainGroup = C99AF37B1BD480FF002DFF93;
-			productRefGroup = C99AF3851BD480FF002DFF93 /* Products */;
+			mainGroup = ED6E04D51BD56A41009E4143;
+			productRefGroup = ED6E04DF1BD56A41009E4143 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C99AF3831BD480FF002DFF93 /* Synq */,
-				C99AF39A1BD480FF002DFF93 /* SynqTests */,
-				C99AF3A51BD480FF002DFF93 /* SynqUITests */,
+				ED6E04DD1BD56A41009E4143 /* Synq */,
+				ED6E04F41BD56A41009E4143 /* SynqTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C99AF3821BD480FF002DFF93 /* Resources */ = {
+		ED6E04DC1BD56A41009E4143 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99AF3951BD480FF002DFF93 /* LaunchScreen.storyboard in Resources */,
-				C99AF3921BD480FF002DFF93 /* Assets.xcassets in Resources */,
-				C99AF38D1BD480FF002DFF93 /* Main.storyboard in Resources */,
+				ED6E04EF1BD56A41009E4143 /* LaunchScreen.storyboard in Resources */,
+				ED6E04EC1BD56A41009E4143 /* Assets.xcassets in Resources */,
+				ED6E04E71BD56A41009E4143 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C99AF3991BD480FF002DFF93 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C99AF3A41BD480FF002DFF93 /* Resources */ = {
+		ED6E04F31BD56A41009E4143 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,65 +218,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C99AF3801BD480FF002DFF93 /* Sources */ = {
+		ED6E04DA1BD56A41009E4143 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99AF3C31BD48630002DFF93 /* SongPreviewVC.swift in Sources */,
-				C99AF3C11BD485E6002DFF93 /* SearchResultsVC.swift in Sources */,
-				C99AF3901BD480FF002DFF93 /* Synq.xcdatamodeld in Sources */,
-				C99AF3BD1BD484B2002DFF93 /* QueuedPlaylistTableVC.swift in Sources */,
-				C99AF3C51BD4C208002DFF93 /* SongTableViewCell.swift in Sources */,
-				C99AF3BF1BD485BD002DFF93 /* SongSearchVC.swift in Sources */,
-				C99AF3881BD480FF002DFF93 /* AppDelegate.swift in Sources */,
-				C99AF3B91BD48264002DFF93 /* ActiveSongVC.swift in Sources */,
+				ED6E04E41BD56A41009E4143 /* ViewController.swift in Sources */,
+				ED6E04EA1BD56A41009E4143 /* Synq.xcdatamodeld in Sources */,
+				ED6E04E21BD56A41009E4143 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C99AF3971BD480FF002DFF93 /* Sources */ = {
+		ED6E04F11BD56A41009E4143 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99AF3A01BD480FF002DFF93 /* SynqTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C99AF3A21BD480FF002DFF93 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C99AF3AB1BD480FF002DFF93 /* SynqUITests.swift in Sources */,
+				ED6E04FA1BD56A41009E4143 /* SynqTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C99AF39D1BD480FF002DFF93 /* PBXTargetDependency */ = {
+		ED6E04F71BD56A41009E4143 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C99AF3831BD480FF002DFF93 /* Synq */;
-			targetProxy = C99AF39C1BD480FF002DFF93 /* PBXContainerItemProxy */;
-		};
-		C99AF3A81BD480FF002DFF93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C99AF3831BD480FF002DFF93 /* Synq */;
-			targetProxy = C99AF3A71BD480FF002DFF93 /* PBXContainerItemProxy */;
+			target = ED6E04DD1BD56A41009E4143 /* Synq */;
+			targetProxy = ED6E04F61BD56A41009E4143 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C99AF38B1BD480FF002DFF93 /* Main.storyboard */ = {
+		ED6E04E51BD56A41009E4143 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C99AF38C1BD480FF002DFF93 /* Base */,
+				ED6E04E61BD56A41009E4143 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C99AF3931BD480FF002DFF93 /* LaunchScreen.storyboard */ = {
+		ED6E04ED1BD56A41009E4143 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C99AF3941BD480FF002DFF93 /* Base */,
+				ED6E04EE1BD56A41009E4143 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -335,7 +266,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C99AF3AD1BD480FF002DFF93 /* Debug */ = {
+		ED6E04FC1BD56A41009E4143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -379,7 +310,7 @@
 			};
 			name = Debug;
 		};
-		C99AF3AE1BD480FF002DFF93 /* Release */ = {
+		ED6E04FD1BD56A41009E4143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -416,126 +347,112 @@
 			};
 			name = Release;
 		};
-		C99AF3B01BD480FF002DFF93 /* Debug */ = {
+		ED6E04FF1BD56A41009E4143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Synq",
+				);
 				INFOPLIST_FILE = Synq/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.Synq;
+				"OTHER_LDFLAGS[arch=*]" = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs378.Synq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Synq/Synq-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		C99AF3B11BD480FF002DFF93 /* Release */ = {
+		ED6E05001BD56A41009E4143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Synq",
+				);
 				INFOPLIST_FILE = Synq/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.Synq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs378.Synq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Synq/Synq-Bridging-Header.h";
 			};
 			name = Release;
 		};
-		C99AF3B31BD480FF002DFF93 /* Debug */ = {
+		ED6E05021BD56A41009E4143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SynqTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.SynqTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs378.SynqTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Synq.app/Synq";
 			};
 			name = Debug;
 		};
-		C99AF3B41BD480FF002DFF93 /* Release */ = {
+		ED6E05031BD56A41009E4143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SynqTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.SynqTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs378.SynqTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Synq.app/Synq";
-			};
-			name = Release;
-		};
-		C99AF3B61BD480FF002DFF93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SynqUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.SynqUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Synq;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		C99AF3B71BD480FF002DFF93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SynqUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Group11.SynqUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Synq;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C99AF37F1BD480FF002DFF93 /* Build configuration list for PBXProject "Synq" */ = {
+		ED6E04D91BD56A41009E4143 /* Build configuration list for PBXProject "Synq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C99AF3AD1BD480FF002DFF93 /* Debug */,
-				C99AF3AE1BD480FF002DFF93 /* Release */,
+				ED6E04FC1BD56A41009E4143 /* Debug */,
+				ED6E04FD1BD56A41009E4143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C99AF3AF1BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "Synq" */ = {
+		ED6E04FE1BD56A41009E4143 /* Build configuration list for PBXNativeTarget "Synq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C99AF3B01BD480FF002DFF93 /* Debug */,
-				C99AF3B11BD480FF002DFF93 /* Release */,
+				ED6E04FF1BD56A41009E4143 /* Debug */,
+				ED6E05001BD56A41009E4143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		C99AF3B21BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "SynqTests" */ = {
+		ED6E05011BD56A41009E4143 /* Build configuration list for PBXNativeTarget "SynqTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C99AF3B31BD480FF002DFF93 /* Debug */,
-				C99AF3B41BD480FF002DFF93 /* Release */,
+				ED6E05021BD56A41009E4143 /* Debug */,
+				ED6E05031BD56A41009E4143 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		C99AF3B51BD480FF002DFF93 /* Build configuration list for PBXNativeTarget "SynqUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C99AF3B61BD480FF002DFF93 /* Debug */,
-				C99AF3B71BD480FF002DFF93 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C99AF38E1BD480FF002DFF93 /* Synq.xcdatamodeld */ = {
+		ED6E04E81BD56A41009E4143 /* Synq.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C99AF38F1BD480FF002DFF93 /* Synq.xcdatamodel */,
+				ED6E04E91BD56A41009E4143 /* Synq.xcdatamodel */,
 			);
-			currentVersion = C99AF38F1BD480FF002DFF93 /* Synq.xcdatamodel */;
+			currentVersion = ED6E04E91BD56A41009E4143 /* Synq.xcdatamodel */;
 			path = Synq.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = C99AF37C1BD480FF002DFF93 /* Project object */;
+	rootObject = ED6E04D61BD56A41009E4143 /* Project object */;
 }

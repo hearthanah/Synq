@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Synq
 //
-//  Created by Matthew Carpenter on 10/18/15.
-//  Copyright © 2015 Group11. All rights reserved.
+//  Created by Hanah Luong on 10/19/15.
+//  Copyright © 2015 cs378. All rights reserved.
 //
 
 import UIKit
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "Group11.Synq" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.cs378.Synq" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
