@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
     
-    let kClientID = "1df1a256d8a0417985e883923b50f6ee"
+    let kClientID = "4158c76252d8498687bd983aca90a2bc"
     let kCallbackURL = "synq-app-login://callback"
     let kTokenSwapURL = "http://localhost:1234/swap"
     let kTokenRefreshURL = "http://localhost:1234/refresh"
@@ -55,6 +55,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         print("login failed")
+        print(error)
     }
     
     // SPTAudioStreamingPlaybackDelegate protocol methods
