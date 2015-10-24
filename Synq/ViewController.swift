@@ -15,10 +15,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kTokenSwapURL = "http://localhost:1234/swap"
     let kTokenRefreshURL = "http://localhost:1234/refresh"
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
 //
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
@@ -27,6 +23,12 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     var player: SPTAudioStreamingController?
     let spotifyAuthenticator = SPTAuth.defaultInstance()
+    
+    
+    @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var trackLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    
     
     @IBAction func loginWithSpotify(sender: AnyObject) {
         spotifyAuthenticator.clientID = kClientID
@@ -40,6 +42,13 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         spotifyAuthenticationViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         spotifyAuthenticationViewController.definesPresentationContext = true
         presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        self.artistLabel.text = ""
+        self.trackLabel.text = ""
     }
     
     // SPTAuthViewDelegate protocol methods
@@ -86,17 +95,30 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     // get the album image, track name, and artist name for the track that's playing
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
         
+        
         if player!.currentTrackURI != nil {
-            // use the uri of the track that just got switched to to get the album's image url
-            let trackURI = NSURL(string: (trackMetadata[SPTAudioStreamingMetadataTrackURI] as! String))
-            SPTTrack.trackWithURI(trackURI, session: spotifyAuthenticator.session, callback:{ (error, track) -> Void in
+            // get the uri of the album for the track that just got switched to
+            let uri = NSURL(string: (trackMetadata["SPTAudioStreamingMetadataAlbumURI"] as! String))
+            
+            self.artistLabel.text = (trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String)
+            self.trackLabel.text = (trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String)
+            
+            
+            SPTAlbum.albumWithURI(uri, accessToken: spotifyAuthenticator.session.accessToken, market: nil, callback:{ (error, album) -> Void in
                 
-                print(error)
-                print(trackURI)
-                track!
-                track!.album!
-                let imageURL = track!.album!.largestCover.imageURL
-                print(imageURL)
+                let imageURL = album!.largestCover!.imageURL
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                    
+                    let albumImageData = NSData(contentsOfURL: imageURL)
+                    // if there is an image then set it
+                    if (albumImageData != nil) {
+                        dispatch_async(dispatch_get_main_queue()){
+                            self.albumImageView.image = UIImage(data: albumImageData!)
+                        }
+                    }
+                    
+                }
             })
                 // use the url for the track to get the data
             

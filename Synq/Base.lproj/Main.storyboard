@@ -59,6 +59,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="hO0-aL-pbl"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="albumImageView" destination="4Pq-6M-7QE" id="DKl-4o-iZV"/>
+                        <outlet property="artistLabel" destination="j2k-eR-I1W" id="1aU-aV-hz0"/>
+                        <outlet property="trackLabel" destination="3iU-od-YqI" id="Yha-Zo-prZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
