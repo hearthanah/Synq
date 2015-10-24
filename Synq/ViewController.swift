@@ -82,6 +82,28 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         let spotifyURI = "spotify:track:1WJk986df8mpqpktoktlce"
         player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
+    
+    // get the album image, track name, and artist name for the track that's playing
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
+        
+        if player!.currentTrackURI != nil {
+            // use the uri of the track that just got switched to to get the album's image url
+            let trackURI = NSURL(string: (trackMetadata[SPTAudioStreamingMetadataTrackURI] as! String))
+            SPTTrack.trackWithURI(trackURI, session: spotifyAuthenticator.session, callback:{ (error, track) -> Void in
+                
+                print(error)
+                print(trackURI)
+                track!
+                track!.album!
+                let imageURL = track!.album!.largestCover.imageURL
+                print(imageURL)
+            })
+                // use the url for the track to get the data
+            
+            
+            // set the outlets to have the data and update the view
+        }
+    }
 }
 
 
