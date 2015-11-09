@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C925CAF41BF15F0900614A1C /* ActiveSongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAEE1BF15F0900614A1C /* ActiveSongVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C925CAF51BF15F0900614A1C /* QueuedPlaylistTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAEF1BF15F0900614A1C /* QueuedPlaylistTableVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C925CAF61BF15F0900614A1C /* SearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAF01BF15F0900614A1C /* SearchResultsVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C925CAF71BF15F0900614A1C /* SongPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAF11BF15F0900614A1C /* SongPreviewVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C925CAF81BF15F0900614A1C /* SongSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAF21BF15F0900614A1C /* SongSearchVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C925CAF91BF15F0900614A1C /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C925CAF31BF15F0900614A1C /* SongTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED6E04E21BD56A41009E4143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E11BD56A41009E4143 /* AppDelegate.swift */; };
 		ED6E04E41BD56A41009E4143 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E31BD56A41009E4143 /* ViewController.swift */; };
 		ED6E04E71BD56A41009E4143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6E04E51BD56A41009E4143 /* Main.storyboard */; };
@@ -30,6 +36,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C925CAEE1BF15F0900614A1C /* ActiveSongVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveSongVC.swift; sourceTree = "<group>"; };
+		C925CAEF1BF15F0900614A1C /* QueuedPlaylistTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueuedPlaylistTableVC.swift; sourceTree = "<group>"; };
+		C925CAF01BF15F0900614A1C /* SearchResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsVC.swift; sourceTree = "<group>"; };
+		C925CAF11BF15F0900614A1C /* SongPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPreviewVC.swift; sourceTree = "<group>"; };
+		C925CAF21BF15F0900614A1C /* SongSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSearchVC.swift; sourceTree = "<group>"; };
+		C925CAF31BF15F0900614A1C /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		ED6E04DE1BD56A41009E4143 /* Synq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Synq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6E04E11BD56A41009E4143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6E04E31BD56A41009E4143 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +106,12 @@
 				ED6E04E11BD56A41009E4143 /* AppDelegate.swift */,
 				ED6E04E31BD56A41009E4143 /* ViewController.swift */,
 				ED6E04E51BD56A41009E4143 /* Main.storyboard */,
+				C925CAEE1BF15F0900614A1C /* ActiveSongVC.swift */,
+				C925CAEF1BF15F0900614A1C /* QueuedPlaylistTableVC.swift */,
+				C925CAF01BF15F0900614A1C /* SearchResultsVC.swift */,
+				C925CAF11BF15F0900614A1C /* SongPreviewVC.swift */,
+				C925CAF21BF15F0900614A1C /* SongSearchVC.swift */,
+				C925CAF31BF15F0900614A1C /* SongTableViewCell.swift */,
 				ED6E04EB1BD56A41009E4143 /* Assets.xcassets */,
 				ED6E04ED1BD56A41009E4143 /* LaunchScreen.storyboard */,
 				ED6E04F01BD56A41009E4143 /* Info.plist */,
@@ -223,6 +241,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED6E04E41BD56A41009E4143 /* ViewController.swift in Sources */,
+				C925CAF51BF15F0900614A1C /* QueuedPlaylistTableVC.swift in Sources */,
+				C925CAF41BF15F0900614A1C /* ActiveSongVC.swift in Sources */,
+				C925CAF81BF15F0900614A1C /* SongSearchVC.swift in Sources */,
+				C925CAF61BF15F0900614A1C /* SearchResultsVC.swift in Sources */,
+				C925CAF71BF15F0900614A1C /* SongPreviewVC.swift in Sources */,
+				C925CAF91BF15F0900614A1C /* SongTableViewCell.swift in Sources */,
 				ED6E04EA1BD56A41009E4143 /* Synq.xcdatamodeld in Sources */,
 				ED6E04E21BD56A41009E4143 /* AppDelegate.swift in Sources */,
 			);
