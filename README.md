@@ -36,12 +36,12 @@ reloadTableViewWithNewListPage method to pass the listPage to the SearchResultsV
 -Implemented the searchResultsTableView and its custom SearchResultsTableViewCells
 in the SearchResultsVC to display the album image, track name, and artist name for each
 of the track items returned by SPTSearch
+-Implemented searching in the SearchResultsVC
 
 Differences: (from App Idea Paper)
 
 TODO FOR BETA:
--Adding in search functionality for the search bar on the SearchResultsVC page
-(can use the same code as in the SongSearchResultsVC page when the button is pressed)
+
 -Creation of a queued song list data model that will store songs (i.e. URI's)
 -SongPreviewVC displaying track information (Should be the same as ActiveSongVC,
 just with uri from the search item)
