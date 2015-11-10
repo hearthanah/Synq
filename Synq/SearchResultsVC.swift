@@ -11,13 +11,25 @@ import UIKit
 class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var listPage:SPTListPage? = nil
+    var spotifyAuthenticator:SPTAuth? = nil
+    
     let cellId:String = "SearchResultCellId"
 
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var searchResultsTableView: UITableView!
-    
-    
+        
+    @IBAction func searchBtnAction(sender: AnyObject) {
+        let countryCode = "US"
+        
+        SPTSearch.performSearchWithQuery(searchTextField!.text, queryType: .QueryTypeTrack, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error, listPageObject) -> Void in
+            let listPage:SPTListPage! = listPageObject as! SPTListPage!
+            if listPage != nil {
+                self.reloadTableViewWithNewListPage(listPage)
+            }
+        }
+
+    }
     
     
     override func viewDidLoad() {

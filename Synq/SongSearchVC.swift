@@ -35,7 +35,7 @@ class SongSearchVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowSearchResults") {
             let searchResultsVC:SearchResultsVC = segue.destinationViewController as! SearchResultsVC
-            searchResultsVC.listPage = self.listPage
+            searchResultsVC.spotifyAuthenticator = self.spotifyAuthenticator
             
             let countryCode = "US"
 
