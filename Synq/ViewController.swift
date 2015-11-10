@@ -94,14 +94,16 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     // get the album image, track name, and artist name for the track that's playing
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
-        
-        
+        updateImageAndLabels(trackMetadata, imageView: self.albumImageView, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+    }
+    
+    func updateImageAndLabels(trackMetadata: [NSObject : AnyObject]!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
         if player!.currentTrackURI != nil {
             // get the uri of the album for the track that just got switched to
             let uri = NSURL(string: (trackMetadata["SPTAudioStreamingMetadataAlbumURI"] as! String))
             
-            self.artistLabel.text = (trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String)
-            self.trackLabel.text = (trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String)
+            artistLabel.text = (trackMetadata["SPTAudioStreamingMetadataArtistName"] as! String)
+            trackLabel.text = (trackMetadata["SPTAudioStreamingMetadataTrackName"] as! String)
             
             
             SPTAlbum.albumWithURI(uri, accessToken: spotifyAuthenticator.session.accessToken, market: nil, callback:{ (error, album) -> Void in
@@ -114,18 +116,25 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
                     // if there is an image then set it
                     if (albumImageData != nil) {
                         dispatch_async(dispatch_get_main_queue()){
-                            self.albumImageView.image = UIImage(data: albumImageData!)
+                            imageView.image = UIImage(data: albumImageData!)
                         }
                     }
-                    
                 }
             })
-                // use the url for the track to get the data
-            
-            
-            // set the outlets to have the data and update the view
         }
     }
+    
+    //MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowActiveSongVC") {
+            let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
+            
+            activeSongVC.player = self.player
+            activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
+        }
+    }
+
 }
 
 
