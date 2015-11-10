@@ -61,7 +61,7 @@
                                     <color key="titleColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3kf-FX-MmB" kind="show" id="eSa-3n-LHv"/>
+                                    <segue destination="3kf-FX-MmB" kind="show" identifier="showActiveSongVC" id="eSa-3n-LHv"/>
                                 </connections>
                             </button>
                         </subviews>
