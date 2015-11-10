@@ -9,9 +9,14 @@
 import UIKit
 
 class SongSearchVC: UIViewController {
+    
+    var spotifyAuthenticator:SPTAuth? = nil
+    var listPage:SPTListPage? = nil
 
     @IBOutlet weak var searchTextField: UITextField!
     
+    @IBOutlet weak var queuedPlaylistTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,14 +29,23 @@ class SongSearchVC: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "ShowSearchResults") {
+            let searchResultsVC:SearchResultsVC = segue.destinationViewController as! SearchResultsVC
+            searchResultsVC.listPage = self.listPage
+            
+            let countryCode = "US"
+
+            SPTSearch.performSearchWithQuery(searchTextField!.text, queryType: .QueryTypeTrack, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error, listPageObject) -> Void in
+                let listPage:SPTListPage! = listPageObject as! SPTListPage!
+                if listPage != nil {
+                    searchResultsVC.reloadTableViewWithNewListPage(listPage)
+                }
+            }
+        }
     }
-    */
 
 }

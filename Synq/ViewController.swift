@@ -127,7 +127,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showActiveSongVC") {
+        if (segue.identifier == "ShowActiveSongVC") {
             let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
             
             activeSongVC.player = self.player

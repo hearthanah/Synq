@@ -61,7 +61,7 @@
                                     <color key="titleColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3kf-FX-MmB" kind="show" identifier="showActiveSongVC" id="eSa-3n-LHv"/>
+                                    <segue destination="3kf-FX-MmB" kind="show" identifier="ShowActiveSongVC" id="eSa-3n-LHv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -245,6 +245,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="queuedPlaylistTableView" destination="0Wl-99-S7c" id="JRx-dk-uWm"/>
                         <outlet property="searchDisplayController" destination="4WJ-yq-G21" id="Rb8-Le-iGi"/>
                         <outlet property="searchTextField" destination="qKV-ma-7JF" id="EW8-HL-SWV"/>
                     </connections>
@@ -298,7 +299,7 @@
                                         <rect key="frame" x="0.0" y="115" width="375" height="560"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongResultCell" id="6pK-DF-hEK" customClass="SongTableViewCell" customModule="Synq" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SearchResultCellId" id="6pK-DF-hEK" customClass="SearchResultsTableViewCell" customModule="Synq" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6pK-DF-hEK" id="WaE-w8-Nxz">
@@ -323,6 +324,9 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="albumImageView" destination="ksH-dJ-cA9" id="Zta-gl-kf0"/>
+                                                    <outlet property="artistLabel" destination="gbJ-23-nri" id="xWX-9V-MeD"/>
+                                                    <outlet property="trackLabel" destination="1Ei-sb-DMy" id="VCX-78-7V6"/>
                                                     <segue destination="5rc-gd-FqJ" kind="show" identifier="ShowSongPreview" id="PYB-4H-OqL">
                                                         <nil key="action"/>
                                                     </segue>
@@ -342,6 +346,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="searchResultsTableView" destination="3C1-7d-Ldd" id="zFg-Pm-dmJ"/>
                         <outlet property="searchTextField" destination="wQi-AK-mqz" id="Iqq-Nr-Ir4"/>
                     </connections>
                 </viewController>

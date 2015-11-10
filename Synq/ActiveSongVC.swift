@@ -58,28 +58,12 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
                     // set the artist label
                     let artists:[SPTPartialArtist]! = track!.artists as! [SPTPartialArtist]!
                     
-                    // get the first artist's name, then the remaining ones separated by semicolons
-                    var artistsString:String = artists[0].name
-                    for (var i = 1; i < artists.count; i++) {
-                        artistsString += "; "
-                        artistsString += artists[i].name
-                    }
-                    
-                    artistLabel!.text = artists[0].name
+                    artistLabel!.text = self.getArtistsNames(artists)
                     
                     // set the album image
                     let imageURL = track.album.largestCover.imageURL
                     
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-                        
-                        let albumImageData = NSData(contentsOfURL: imageURL)
-                        // if there is an image then set it
-                        if (albumImageData != nil) {
-                            dispatch_async(dispatch_get_main_queue()){
-                                imageView.image = UIImage(data: albumImageData!)
-                            }
-                        }
-                    }
+                    self.setImage(imageView, imageURL: imageURL)
                     
                 } else {
                     print("track is nil")
@@ -88,15 +72,41 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             }
         }
     }
-
     
+    func setImage(imageView: UIImageView, imageURL: NSURL!) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+            
+            let albumImageData = NSData(contentsOfURL: imageURL)
+            // if there is an image then set it
+            if (albumImageData != nil) {
+                dispatch_async(dispatch_get_main_queue()){
+                    imageView.image = UIImage(data: albumImageData!)
+                }
+            }
+        }
+    }
+    
+    func getArtistsNames(artists: [SPTPartialArtist]!) -> String {
+        
+        var artistsString:String = artists[0].name
+        for (var i = 1; i < artists.count; i++) {
+            artistsString += "; "
+            artistsString += artists[i].name
+        }
+        return artistsString
+        
+    }
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "ShowSongSearch") {
+            let songSearchVC:SongSearchVC = segue.destinationViewController as! SongSearchVC
+            
+            songSearchVC.spotifyAuthenticator = self.spotifyAuthenticator
+        }
     }
 
 }
