@@ -42,11 +42,13 @@ Differences: (from App Idea Paper)
 
 TODO FOR BETA:
 
--Creation of a queued song list data model that will store songs (i.e. URI's)
 -SongPreviewVC displaying track information (Should be the same as ActiveSongVC,
 just with uri from the search item)
+
+-Creation of a queued song list data model that will store songs (i.e. URI's)
 -Adding "songs" (i.e. URIs) to the queuedSongListDataModel from the SongPreviewVC
 -Implementing queuedPlaylistTableViews for the QueuedPlaylistTableVC and SongSearchVC
+
 -Setting up the back button of the QueuedPlaylistTableVC to always go back to the ActiveSongVC
 (poping back multiple scenes at once if coming from the SongPreviewVC)
 
@@ -57,6 +59,7 @@ playlist fade in after logging in)
 -Set up some way of synchronizing playlists across multiple users
 -Add another button to the login screen for accessing another user's (host phone's)
 playlist instead of creating your own after logging in (using some sort of playlist ID)
+
 -Figure out how to integrate the spotify token server into the app, or run it remotely
 
 
