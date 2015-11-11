@@ -12,7 +12,6 @@ class QueuedPlaylistDataModel {
     // MARK: - Properties
     
     private var trackInfoArr:[TrackInfo]
-    private let spotifyAuthenticator: SPTAuth
     
     // MARK: - Methods
     
@@ -22,8 +21,8 @@ class QueuedPlaylistDataModel {
         return trackInfoArr[index].getTrackInfo()
     }
     
-    func pushNewTrack(trackURI: NSURL!) {
-        self.trackInfoArr.append(TrackInfo(trackURI: trackURI, accessToken: spotifyAuthenticator.session.accessToken))
+    func pushNewTrack(track: SPTPartialTrack, trackImage: UIImage) {
+        self.trackInfoArr.append(TrackInfo(track: track, trackImage: trackImage))
     }
     
     // TODO: - Implement removeTrackInfoAtIndex in QueuedPlaylistDataModel
@@ -42,8 +41,7 @@ class QueuedPlaylistDataModel {
     
     // MARK: - Initializers
     
-    init(spotifyAuthenticator: SPTAuth) {
+    init() {
         self.trackInfoArr = [TrackInfo]()
-        self.spotifyAuthenticator = spotifyAuthenticator
     }
 }

@@ -23,17 +23,12 @@ class TrackInfo {
     }
     
     // MARK: - Initializers
-    init(trackURI: NSURL!, accessToken: String!) {
-        self.trackURI = trackURI
-        // TODO: use TrackInfoRetrieverHelper to pull the other info
-        let trackInfoDict = TrackInfoRetrieverHelper.getTrackInfoForURI(trackURI, accessToken: accessToken)
+    init(track: SPTPartialTrack, trackImage: UIImage) {
+        self.trackURI = track.playableUri
         
-        self.trackName = trackInfoDict["trackName"] as! String
-        self.artistNames = trackInfoDict["artistsName"] as! String
-        
-        let albumImageURL = trackInfoDict["albumImageURL"] as! NSURL!
-        let albumImageData = NSData(contentsOfURL: albumImageURL)
-        self.albumImage = UIImage(data: albumImageData!)!
+        self.trackName = track.name
+        self.artistNames = TrackInfoRetrieverHelper.getArtistsNames(track.artists as! [SPTArtist]!)
+        self.albumImage = trackImage
         
     }
 }

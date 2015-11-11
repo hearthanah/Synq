@@ -11,9 +11,30 @@ import UIKit
 class QueuedPlaylistTableVC: UITableViewController {
     
     var playlist: QueuedPlaylistDataModel? = nil
+    var newTrack: SPTPartialTrack? = nil
+    var spotifyAuthenticator: SPTAuth? = nil
+    var albumImage: UIImage? = nil
+    let reuseIdentifier = "QueuedCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (newTrack != nil) {
+            var trackImage = UIImage()
+            if ( self.albumImage != nil ) {
+                trackImage = self.albumImage!
+            }
+
+            playlist?.pushNewTrack(newTrack!, trackImage: trackImage)
+            
+            self.tableView.reloadData()
+        } else {
+            print("nil track", newTrack)
+        }
+        
+        if (playlist == nil) {
+            print("nil playlist")
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,13 +63,15 @@ class QueuedPlaylistTableVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! QueuedPlaylistTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier, forIndexPath: indexPath) as! QueuedPlaylistTableViewCell
 
         // Configure the cell...
-        let trackInfo = playlist!.getInfoForTrackAtIndex(indexPath.row)
-        cell.trackLabel =
-        cell.artistLabel =
-        cell.imageView =
+        let trackInfoDict = playlist!.getInfoForTrackAtIndex(indexPath.row)
+        cell.trackLabel.text = "track" //(trackInfoDict["trackName"] as! String)
+        cell.artistLabel.text = "artists" //(trackInfoDict["artistName"] as! String)
+        cell.imageView?.image = (trackInfoDict["albumImage"] as! UIImage)
+        
+        print("track info dict", trackInfoDict)
 
         return cell
     }

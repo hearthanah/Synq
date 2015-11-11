@@ -22,8 +22,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let spotifyAuthenticator = SPTAuth.defaultInstance()
     
     
-    
-    
     @IBAction func loginWithSpotify(sender: AnyObject) {
         spotifyAuthenticator.clientID = kClientID
         spotifyAuthenticator.requestedScopes = [SPTAuthStreamingScope]
@@ -82,7 +80,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             
             self.hideButton.layer.zPosition = -1
             self.hideButtonLogin.layer.zPosition = 1
-
+            
             self.useLoggedInPermissions()
         })
     }
@@ -132,6 +130,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
+            
         }
     }
 

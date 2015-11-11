@@ -12,6 +12,7 @@ class SongSearchVC: UIViewController {
     
     var spotifyAuthenticator:SPTAuth? = nil
     var listPage:SPTListPage? = nil
+    var playlist: QueuedPlaylistDataModel? = nil
 
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -45,6 +46,8 @@ class SongSearchVC: UIViewController {
                     searchResultsVC.reloadTableViewWithNewListPage(listPage)
                 }
             }
+            
+            searchResultsVC.playlist = self.playlist
         }
     }
 

@@ -16,6 +16,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
     
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
+    let playlist:QueuedPlaylistDataModel = QueuedPlaylistDataModel()
 
 
     override func viewDidLoad() {
@@ -26,8 +27,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             if player!.currentTrackURI != nil {
                 updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
             }
-        }
-        
+        }        
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,6 +106,11 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             let songSearchVC:SongSearchVC = segue.destinationViewController as! SongSearchVC
             
             songSearchVC.spotifyAuthenticator = self.spotifyAuthenticator
+            songSearchVC.playlist = self.playlist
+        } else if (segue.identifier == "ShowQueuedPlaylistFromActiveSong") {
+            let queuedPlaylistTVC: QueuedPlaylistTableVC = segue.destinationViewController as! QueuedPlaylistTableVC
+            
+            queuedPlaylistTVC.playlist = self.playlist
         }
     }
 
