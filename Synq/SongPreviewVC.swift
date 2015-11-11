@@ -10,6 +10,10 @@ import UIKit
 
 class SongPreviewVC: UIViewController {
     
+    var track: SPTPartialTrack? = nil
+    var spotifyAuthenticator:SPTAuth? = nil
+
+    
     @IBOutlet weak var image: UIImageView!
     
     @IBOutlet weak var trackLabel: UILabel!
@@ -18,6 +22,7 @@ class SongPreviewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        TrackInfoRetrieverHelper.getTrackInfoForURI(track?.playableUri, accessToken: spotifyAuthenticator?.session.accessToken)
         // Do any additional setup after loading the view.
     }
 

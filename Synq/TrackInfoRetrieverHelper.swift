@@ -41,6 +41,10 @@ class TrackInfoRetrieverHelper {
             }
         }
         
+        print(trackName)
+        print(artistsNames)
+        print(albumImageURL)
+        
         let trackInfoDict = ["trackName": trackName, "artistsNames": artistsNames, "albumImageURL": albumImageURL]
         
         return trackInfoDict
