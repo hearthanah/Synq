@@ -28,10 +28,12 @@ class QueuedPlalistDataModel {
     
     // TODO: - Implement removeTrackInfoAtIndex in QueuedPlaylistDataModel
     func removeTrackInfoAtIndex(index: Int) {
+        self.trackInfoArr.removeAtIndex(index)
     }
     
     // TODO: - Implement popPlayedTrack in QueuedPlaylistDataModel
     func popPlayedTrack() {
+        self.trackInfoArr.removeFirst()
     }
     
     // MARK: - Initializers
