@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QueuedPlalistDataModel {
+class QueuedPlaylistDataModel {
     // MARK: - Properties
     
     private var trackInfoArr:[TrackInfo]
