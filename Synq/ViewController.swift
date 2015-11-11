@@ -124,7 +124,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         }
     }
     
-    //MARK: - Navigation
+    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowActiveSongVC") {
