@@ -24,6 +24,16 @@ ALPHA: Our application connects with spotify, plays one designated song and show
 
 BETA: 
 Contributions:
+Pair Programming:
+-Finalized the queueing setup for adding song from the search result.
+-We are using segues between all views to pass along the playlist. This will later be replaced by CoreData model.
+-The Queued playlist Table View Controllers now displays all the list in the playlist
+-Song Preview shows all the song data based off of the search results.
+-Fixed the track info and queued playlist data model, to work without having to querying the Spotify API.
+Hanah Luong:
+-Layout setup
+-Button hiding when such options are not available until the user does specific steps. Ex. Login comes before the user is able to create a new playlist.
+-Segues between the SearhResult and showSongPreview
 Matthew Carpenter:
 -Copied storyboard view controllers and classes I had made from a previous commit that had been
 written over and placed them into the current storyboard.
@@ -37,30 +47,10 @@ reloadTableViewWithNewListPage method to pass the listPage to the SearchResultsV
 in the SearchResultsVC to display the album image, track name, and artist name for each
 of the track items returned by SPTSearch
 -Implemented searching in the SearchResultsVC
+-Wrote QueuedPlaylistDataModel, TrackInfo, TrackInfoRetrieverHelper classes
 
 Differences: (from App Idea Paper)
-
-TODO FOR BETA:
-
--SongPreviewVC displaying track information (Should be the same as ActiveSongVC,
-just with uri from the search item)
-
--Creation of a queued song list data model that will store songs (i.e. URI's)
--Adding "songs" (i.e. URIs) to the queuedSongListDataModel from the SongPreviewVC
--Implementing queuedPlaylistTableViews for the QueuedPlaylistTableVC and SongSearchVC
-
--Setting up the back button of the QueuedPlaylistTableVC to always go back to the ActiveSongVC
-(poping back multiple scenes at once if coming from the SongPreviewVC)
-
--Clean up the login screen (get rid of song info & have the button for creating a
-playlist fade in after logging in)
-    -Should the navigation controller be moved to after the login screen?
-
--Set up some way of synchronizing playlists across multiple users
--Add another button to the login screen for accessing another user's (host phone's)
-playlist instead of creating your own after logging in (using some sort of playlist ID)
-
--Figure out how to integrate the spotify token server into the app, or run it remotely
+Don't have a synchronized playlist. Instead we implemented a basis for the song queueing. This keeps data of the track URI, track name, artist, and image. From here we will be able to play the tracks using the Track URI, but the persistant player needs to be implemented.
 
 
 RELEASE: tba

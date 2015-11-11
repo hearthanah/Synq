@@ -17,7 +17,7 @@ class TrackInfo {
     
     // MARK: - Methods
     func getTrackInfo()  -> [String: AnyObject] {
-        let trackInfoDict:[String: AnyObject] = ["trackURI": trackURI, "trackName": trackName, "artistNames": artistNames, "albumImage": albumImage]
+        let trackInfoDict:[String: AnyObject] = ["trackURI": trackURI, "trackName": trackName, "artistName": artistNames, "albumImage": albumImage]
         
         return trackInfoDict
     }

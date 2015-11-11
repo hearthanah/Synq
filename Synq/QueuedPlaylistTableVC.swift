@@ -67,8 +67,8 @@ class QueuedPlaylistTableVC: UITableViewController {
 
         // Configure the cell...
         let trackInfoDict = playlist!.getInfoForTrackAtIndex(indexPath.row)
-        cell.trackLabel.text = "track" //(trackInfoDict["trackName"] as! String)
-        cell.artistLabel.text = "artists" //(trackInfoDict["artistName"] as! String)
+        cell.trackLabel.text = (trackInfoDict["trackName"] as! String)
+        cell.artistLabel.text = (trackInfoDict["artistName"] as! String)
         cell.imageView?.image = (trackInfoDict["albumImage"] as! UIImage)
         
         print("track info dict", trackInfoDict)
