@@ -36,6 +36,10 @@ class QueuedPlaylistDataModel {
         self.trackInfoArr.removeFirst()
     }
     
+    func count() -> Int {
+        return self.trackInfoArr.count
+    }
+    
     // MARK: - Initializers
     
     init(spotifyAuthenticator: SPTAuth) {
