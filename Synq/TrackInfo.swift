@@ -13,7 +13,7 @@ class TrackInfo {
     private let trackURI: NSURL!
     private let trackName: String
     private let artistNames: String
-    private let albumImage: UIImage
+    private var albumImage: UIImage
     
     // MARK: - Methods
     func getTrackInfo()  -> [String: AnyObject] {
@@ -23,11 +23,17 @@ class TrackInfo {
     }
     
     // MARK: - Initializers
-    init(trackURI: NSURL!) {
+    init(trackURI: NSURL!, accessToken: String!) {
         self.trackURI = trackURI
         // TODO: use TrackInfoRetrieverHelper to pull the other info
-        self.trackName = "NEED TO FINISH TRACKINFO INITIALIZER"
-        self.artistNames = "NEED TO FINISH TRACKINFO INITIALIZER"
-        self.albumImage = UIImage()
+        let trackInfoDict = TrackInfoRetrieverHelper.getTrackInfoForURI(trackURI, accessToken: accessToken)
+        
+        self.trackName = trackInfoDict["trackName"] as! String
+        self.artistNames = trackInfoDict["artistsName"] as! String
+        
+        let albumImageURL = trackInfoDict["albumImageURL"] as! NSURL!
+        let albumImageData = NSData(contentsOfURL: albumImageURL)
+        self.albumImage = UIImage(data: albumImageData!)!
+        
     }
 }
