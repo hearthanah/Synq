@@ -16,6 +16,7 @@
 		C925CAFD1BF1DA2300614A1C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C925CAFC1BF1DA2300614A1C /* README.md */; settings = {ASSET_TAGS = (); }; };
 		C969EC171BF2978400A5B5C1 /* QueuedPlalistDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969EC161BF2978400A5B5C1 /* QueuedPlalistDataModel.swift */; settings = {ASSET_TAGS = (); }; };
 		C969EC191BF2983400A5B5C1 /* TrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C969EC181BF2983400A5B5C1 /* TrackInfo.swift */; settings = {ASSET_TAGS = (); }; };
+		C985A9F91BF2A2020046E76D /* TrackInfoRetrieverHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C985A9F81BF2A2020046E76D /* TrackInfoRetrieverHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		ED6E04E21BD56A41009E4143 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E11BD56A41009E4143 /* AppDelegate.swift */; };
 		ED6E04E41BD56A41009E4143 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6E04E31BD56A41009E4143 /* ViewController.swift */; };
 		ED6E04E71BD56A41009E4143 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6E04E51BD56A41009E4143 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		C925CAFC1BF1DA2300614A1C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C969EC161BF2978400A5B5C1 /* QueuedPlalistDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueuedPlalistDataModel.swift; sourceTree = "<group>"; };
 		C969EC181BF2983400A5B5C1 /* TrackInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfo.swift; sourceTree = "<group>"; };
+		C985A9F81BF2A2020046E76D /* TrackInfoRetrieverHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfoRetrieverHelper.swift; sourceTree = "<group>"; };
 		ED6E04DE1BD56A41009E4143 /* Synq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Synq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6E04E11BD56A41009E4143 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6E04E31BD56A41009E4143 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				ED6E04E11BD56A41009E4143 /* AppDelegate.swift */,
 				C969EC161BF2978400A5B5C1 /* QueuedPlalistDataModel.swift */,
 				C969EC181BF2983400A5B5C1 /* TrackInfo.swift */,
+				C985A9F81BF2A2020046E76D /* TrackInfoRetrieverHelper.swift */,
 				ED6E04E31BD56A41009E4143 /* ViewController.swift */,
 				ED6E04E51BD56A41009E4143 /* Main.storyboard */,
 				C925CAEE1BF15F0900614A1C /* ActiveSongVC.swift */,
@@ -253,6 +256,7 @@
 				C925CAF51BF15F0900614A1C /* QueuedPlaylistTableVC.swift in Sources */,
 				C925CAFD1BF1DA2300614A1C /* README.md in Sources */,
 				C925CAF41BF15F0900614A1C /* ActiveSongVC.swift in Sources */,
+				C985A9F91BF2A2020046E76D /* TrackInfoRetrieverHelper.swift in Sources */,
 				C925CAF81BF15F0900614A1C /* SongSearchVC.swift in Sources */,
 				C925CAFB1BF1C20000614A1C /* SearchResultsTableViewCell.swift in Sources */,
 				C925CAF61BF15F0900614A1C /* SearchResultsVC.swift in Sources */,
