@@ -25,9 +25,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let spotifyAuthenticator = SPTAuth.defaultInstance()
     
     
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var trackLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
     
     
     @IBAction func loginWithSpotify(sender: AnyObject) {
@@ -47,8 +44,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.artistLabel.text = ""
-        self.trackLabel.text = ""
+
     }
     
     // SPTAuthViewDelegate protocol methods
@@ -94,7 +90,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     // get the album image, track name, and artist name for the track that's playing
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
-        updateImageAndLabels(trackMetadata, imageView: self.albumImageView, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+
     }
     
     func updateImageAndLabels(trackMetadata: [NSObject : AnyObject]!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
