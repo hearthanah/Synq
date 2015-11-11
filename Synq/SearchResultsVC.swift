@@ -52,8 +52,20 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showSongPreview" {
+            
+            // Get the destination view controller
+            let songPreviewShow:SongPreviewVC = segue.destinationViewController as! SongPreviewVC
+            
+            let resultIndex = self.searchResultsTableView.indexPathForSelectedRow!.row
+            
+            let track:SPTPartialTrack = self.listPage!.items[resultIndex] as! SPTPartialTrack
+
+            // Pass in the data model for the row selected
+            songPreviewShow.track = track
+            songPreviewShow.spotifyAuthenticator = spotifyAuthenticator
+        }
+    
     }
     
     // MARK: - Table view data source
