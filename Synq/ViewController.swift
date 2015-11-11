@@ -15,11 +15,8 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kTokenSwapURL = "http://localhost:1234/swap"
     let kTokenRefreshURL = "http://localhost:1234/refresh"
 
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+    @IBOutlet weak var hideButton: UIView!
+    @IBOutlet weak var hideButtonLogin: UIView!
     
     var player: SPTAudioStreamingController?
     let spotifyAuthenticator = SPTAuth.defaultInstance()
@@ -44,7 +41,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
+        self.hideButton.layer.zPosition = 1
+        self.hideButtonLogin.layer.zPosition = -1
+        
     }
     
     // SPTAuthViewDelegate protocol methods
@@ -79,6 +79,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
                 print("Couldn't login with session: \(error)")
                 return
             }
+            
+            self.hideButton.layer.zPosition = -1
+            self.hideButtonLogin.layer.zPosition = 1
+
             self.useLoggedInPermissions()
         })
     }
