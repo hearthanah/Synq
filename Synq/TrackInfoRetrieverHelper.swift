@@ -22,7 +22,8 @@ class TrackInfoRetrieverHelper {
         
         SPTTrack.trackWithURI(trackURI, accessToken: accessToken, market: countryCode)  { (error , trackObject) -> Void in
             let track:SPTTrack! = trackObject as! SPTTrack!
-            
+            print("track retriever:", track)
+
             if (track != nil) {
                 // set the track label
                 trackName = track!.name
@@ -40,6 +41,10 @@ class TrackInfoRetrieverHelper {
                 print(error)
             }
         }
+        
+        print("track", trackName)
+        print("artists", artistsNames)
+        print("album", albumImageURL)
         
         let trackInfoDict = ["trackName": trackName, "artistsNames": artistsNames, "albumImageURL": albumImageURL]
         
@@ -70,7 +75,7 @@ class TrackInfoRetrieverHelper {
     }
     
     // MARK: - Private functions
-    private class func getArtistsNames(artists: [SPTPartialArtist]!) -> String {
+    class func getArtistsNames(artists: [SPTPartialArtist]!) -> String {
         
         var artistsString:String = artists[0].name
         for (var i = 1; i < artists.count; i++) {

@@ -15,19 +15,11 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kTokenSwapURL = "http://localhost:1234/swap"
     let kTokenRefreshURL = "http://localhost:1234/refresh"
 
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+    @IBOutlet weak var hideButton: UIView!
+    @IBOutlet weak var hideButtonLogin: UIView!
     
     var player: SPTAudioStreamingController?
     let spotifyAuthenticator = SPTAuth.defaultInstance()
-    
-    
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var trackLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
     
     
     @IBAction func loginWithSpotify(sender: AnyObject) {
@@ -47,8 +39,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.artistLabel.text = ""
-        self.trackLabel.text = ""
+        
+        self.hideButton.layer.zPosition = 1
+        self.hideButtonLogin.layer.zPosition = -1
+        
     }
     
     // SPTAuthViewDelegate protocol methods
@@ -83,6 +77,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
                 print("Couldn't login with session: \(error)")
                 return
             }
+            
+            self.hideButton.layer.zPosition = -1
+            self.hideButtonLogin.layer.zPosition = 1
+            
             self.useLoggedInPermissions()
         })
     }
@@ -94,7 +92,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     // get the album image, track name, and artist name for the track that's playing
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
-        updateImageAndLabels(trackMetadata, imageView: self.albumImageView, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+
     }
     
     func updateImageAndLabels(trackMetadata: [NSObject : AnyObject]!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
@@ -132,6 +130,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
+            
         }
     }
 

@@ -12,6 +12,8 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     var listPage:SPTListPage? = nil
     var spotifyAuthenticator:SPTAuth? = nil
+    var playlist: QueuedPlaylistDataModel? = nil
+
     
     let cellId:String = "SearchResultCellId"
 
@@ -52,8 +54,21 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowSongPreview" {
+            
+            // Get the destination view controller
+            let songPreviewShow:SongPreviewVC = segue.destinationViewController as! SongPreviewVC
+            
+            let resultIndex = self.searchResultsTableView.indexPathForSelectedRow!.row
+
+            let track:SPTPartialTrack = self.listPage!.items[resultIndex] as! SPTPartialTrack
+
+            // Pass in the data model for the row selected
+            songPreviewShow.track = track
+            songPreviewShow.spotifyAuthenticator = spotifyAuthenticator
+            songPreviewShow.playlist = self.playlist
+        }
+    
     }
     
     // MARK: - Table view data source
@@ -102,18 +117,11 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
  
     }
     
-    // commented out some async threading b/c images were only showing up 
-    // after tapping a cell with it turned on. Perhaps b/c table had already finished loading?
     func setImage(imageView: UIImageView, imageURL: NSURL!) {
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
-            let albumImageData = NSData(contentsOfURL: imageURL)
-            // if there is an image then set it
-            if (albumImageData != nil) {
-//                dispatch_async(dispatch_get_main_queue()){
-                    imageView.image = UIImage(data: albumImageData!)
-//                }
-            }
-//        }
+        let albumImageData = NSData(contentsOfURL: imageURL)
+        if (albumImageData != nil) {
+            imageView.image = UIImage(data: albumImageData!)
+        }
     }
     
 }
