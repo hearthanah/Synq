@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
+class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var trackLabel: UILabel!
@@ -30,7 +30,9 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             if player!.currentTrackURI != nil {
                 updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
             }
-        }        
+        }
+        
+        player?.playbackDelegate = self
     }
 
     override func didReceiveMemoryWarning() {

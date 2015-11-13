@@ -50,7 +50,7 @@ of the track items returned by SPTSearch
 -Wrote QueuedPlaylistDataModel, TrackInfo, TrackInfoRetrieverHelper classes
 -Implemented the table view for SongSearchVC
 -Added UINavigationItem titles and back buttons for each view.
--Set up QueuedPlaylistVC to always pop back to the ActiveSongVC
+-Set up QueuedPlaylistVC to always pop back to the ActiveSongVC using an unwind segue
 
 Differences: (from App Idea Paper)
 Don't have a synchronized playlist. Instead we implemented a basis for the song queueing. This keeps data of the track URI, track name, artist, and image. From here we will be able to play the tracks using the Track URI, but the persistant player needs to be implemented.
