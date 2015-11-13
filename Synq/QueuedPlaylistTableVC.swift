@@ -14,12 +14,15 @@ class QueuedPlaylistTableVC: UITableViewController {
     var newTrack: SPTPartialTrack? = nil
     var spotifyAuthenticator: SPTAuth? = nil
     var albumImage: UIImage? = nil
-    let reuseIdentifier = "QueuedCell"
+    let reuseIdentifier: String = "QueuedCell"
+    
+    let indexOfActiveSongVC: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if (newTrack != nil) {
+            
             var trackImage = UIImage()
             if ( self.albumImage != nil ) {
                 trackImage = self.albumImage!
@@ -38,11 +41,8 @@ class QueuedPlaylistTableVC: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "Queued Playlist"
-        let backBtn = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backBtn
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

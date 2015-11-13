@@ -14,6 +14,9 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     
+    @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
+    }
+
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
     let playlist:QueuedPlaylistDataModel = QueuedPlaylistDataModel()
