@@ -52,10 +52,12 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         loginWithSpotifySession(session)
     }
     
+    // TODO: - display login failures in the UI?
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
         print("login cancelled")
     }
     
+    // TODO: - display login failures in the UI?
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         print("login failed")
         print(error)

@@ -66,7 +66,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
                     self.setImage(imageView, imageURL: imageURL)
                     
                 } else {
-                    print("track is nil")
+                    print("In updateImageAndLabelsForTrackURI in ActiveSongVC:")
                     print(error)
                 }
             }

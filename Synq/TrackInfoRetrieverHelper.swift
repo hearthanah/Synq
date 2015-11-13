@@ -22,7 +22,6 @@ class TrackInfoRetrieverHelper {
         
         SPTTrack.trackWithURI(trackURI, accessToken: accessToken, market: countryCode)  { (error , trackObject) -> Void in
             let track:SPTTrack! = trackObject as! SPTTrack!
-            print("track retriever:", track)
 
             if (track != nil) {
                 // set the track label
@@ -37,15 +36,11 @@ class TrackInfoRetrieverHelper {
                 albumImageURL = track.album.largestCover.imageURL
                 
             } else {
-                print("track is nil")
+                print("nil track in getTrackInfoForURI in TrackInfoRetrieverHelper:")
                 print(error)
             }
         }
-        
-        print("track", trackName)
-        print("artists", artistsNames)
-        print("album", albumImageURL)
-        
+                
         let trackInfoDict = ["trackName": trackName, "artistsNames": artistsNames, "albumImageURL": albumImageURL]
         
         return trackInfoDict
