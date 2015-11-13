@@ -33,6 +33,15 @@ class QueuedPlaylistTableVC: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "Queued Playlist"
+        let backBtn = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backBtn
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

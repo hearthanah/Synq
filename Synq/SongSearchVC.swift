@@ -32,8 +32,15 @@ class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     // navigating back to it
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.queuedPlaylistTableView.reloadData()
+        
+        self.navigationItem.title = "Search"
+        let backBtn = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backBtn
+        
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

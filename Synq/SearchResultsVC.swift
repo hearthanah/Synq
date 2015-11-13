@@ -41,6 +41,15 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         self.searchResultsTableView.delegate = self
         self.searchResultsTableView.dataSource = self
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "Search Results"
+        let backBtn = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backBtn
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

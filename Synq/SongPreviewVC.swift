@@ -29,6 +29,15 @@ class SongPreviewVC: UIViewController {
         let imageURL: NSURL! = track?.album.largestCover.imageURL
         TrackInfoRetrieverHelper.setImageAsync(self.image, imageURL: imageURL)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "Song Preview"
+        let backBtn = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backBtn
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
