@@ -47,7 +47,13 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
             updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
         }
     }
-
+    
+    // When the track stops start playing the next track
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: NSURL!) {
+        let spotifyURI = "spotify:track:47U7pMUeyS7pDPLNnr66gl"
+        self.player?.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
+        
+    }
     
     func updateImageAndLabelsForTrackURI(trackURI: NSURL!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
         if player!.currentTrackURI != nil {
