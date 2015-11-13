@@ -178,7 +178,7 @@
                                 <rect key="frame" x="0.0" y="49" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongSearchCell" id="Wjh-BB-4xN" customClass="SongTableViewCell" customModule="Synq" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SongSearchCell" id="Wjh-BB-4xN" customClass="SongSearchCell" customModule="Synq" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wjh-BB-4xN" id="Uu8-kI-YlQ">
@@ -202,6 +202,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumImageView" destination="v7X-uP-r3n" id="H7Z-fJ-2hV"/>
+                                            <outlet property="artistLabel" destination="3tF-wO-3j8" id="dCV-wf-mmG"/>
+                                            <outlet property="trackLabel" destination="JPK-Qv-4WT" id="9mq-as-XAN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
