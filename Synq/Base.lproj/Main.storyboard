@@ -454,10 +454,18 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dV7-Uy-P4S">
+                        <barButtonItem key="leftBarButtonItem" title="Active Song" id="5zM-0O-Su8">
+                            <connections>
+                                <segue destination="dtT-Mk-V7I" kind="unwind" unwindAction="unwindToActiveSongVC:" id="IsD-t3-0QL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyt-yL-Vbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dtT-Mk-V7I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1911.5" y="1258.5"/>
         </scene>
