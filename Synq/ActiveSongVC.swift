@@ -24,15 +24,16 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
+            player?.playbackDelegate = self
             if player!.currentTrackURI != nil {
                 updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
             }
         }
         
-        player?.playbackDelegate = self
+        self.navigationItem.setHidesBackButton(true, animated:true);
     }
 
     override func didReceiveMemoryWarning() {
