@@ -27,7 +27,10 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             if player!.currentTrackURI != nil {
                 updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
             }
-        }        
+        }
+        
+        self.navigationItem.setHidesBackButton(true, animated:true);
+
     }
 
     override func didReceiveMemoryWarning() {
