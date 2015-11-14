@@ -31,6 +31,9 @@ Pair Programming:
 -Song Preview shows all the song data based off of the search results.
 -Fixed the track info and queued playlist data model, to work without having to querying the Spotify API.
 Hanah Luong:
+-Song playing and pausing action
+-Button update for changing between scenes
+-Disabling go back for pages that should not be navigable after a certain point.
 -Layout setup
 -Button hiding when such options are not available until the user does specific steps. Ex. Login comes before the user is able to create a new playlist.
 -Segues between the SearhResult and showSongPreview
