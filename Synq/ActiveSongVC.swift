@@ -16,6 +16,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
+    
+    let isHostPhone: Bool = true
 
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
@@ -25,15 +27,24 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
             player?.playbackDelegate = self
-            if player!.currentTrackURI != nil {
-                updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
-            }
         }
         
+        // Make sure that when the view loads the info for the current track is displayed
         self.navigationItem.setHidesBackButton(true, animated:true);
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if playlist.count() != 0 {
+            let currentTrackURI = playlist.getURIForCurrentTrack()
+            updateImageAndLabelsForTrackURI(currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+        } else {
+            self.image.image = UIImage()
+            self.artistLabel.text = "No song in queue"
+            self.trackLabel.text = "No song in queue"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,17 +61,32 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     // When the track stops start playing the next track
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: NSURL!) {
-        let spotifyURI = "spotify:track:47U7pMUeyS7pDPLNnr66gl"
-        self.player?.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
+        let spotifyURI:NSURL! = playlist.getURIForNextTrack()
+        if (spotifyURI == nil) {
+            // if there isn't another track to be played inform the user
+            self.image.image = UIImage()
+            self.artistLabel.text = "No song in queue"
+            self.trackLabel.text = "No song in queue"
+        } else {
+            changeToSongWithURI(spotifyURI)
+        }
+    }
+    
+    func changeToSongWithURI(uri: NSURL!) {
+        // only the host phone should be playing music
+        if (isHostPhone) {
+            self.player?.playURIs([uri], withOptions: nil, callback: nil)
+        }
         
+        // All phones need to update the image and labels
+        updateImageAndLabelsForTrackURI(uri, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
     }
     
     func updateImageAndLabelsForTrackURI(trackURI: NSURL!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
-        if player!.currentTrackURI != nil {
-            let currentTrackURI = player!.currentTrackURI
+        if trackURI != nil {
             let countryCode = "US" // as per ISO 3166-1
             
-            SPTTrack.trackWithURI(currentTrackURI, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error , trackObject) -> Void in
+            SPTTrack.trackWithURI(trackURI, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error , trackObject) -> Void in
                 let track:SPTTrack! = trackObject as! SPTTrack!
                 
                 if (track != nil) {

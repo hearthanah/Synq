@@ -88,7 +88,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     }
     
     func useLoggedInPermissions() {
-        let spotifyURI = "spotify:track:1WJk986df8mpqpktoktlce"
+        let spotifyURI = "spotify:track:4buiA3kZSYJnqsASy1NfMc"
         player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
     
