@@ -88,8 +88,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     }
     
     func useLoggedInPermissions() {
-        let spotifyURI = "spotify:track:4buiA3kZSYJnqsASy1NfMc"
-        player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
     
     // get the album image, track name, and artist name for the track that's playing
