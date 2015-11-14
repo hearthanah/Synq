@@ -13,6 +13,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var playBtnLabel: UILabel!
     
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
@@ -24,7 +25,9 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        playBtnLabel.text = "Pause"
+        
         // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
             if player!.currentTrackURI != nil {
@@ -91,6 +94,22 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             }
         }
     }
+    
+    
+    @IBAction func setPlaySatus(sender: AnyObject) {
+    
+        if (self.player?.isPlaying == true) {
+            
+            self.player?.setIsPlaying(false, callback: nil)
+            playBtnLabel.text = "Play"
+        }else{
+
+            self.player?.setIsPlaying(true, callback: nil)
+            playBtnLabel.text = "Pause"
+            
+        }
+    }
+
     
     func getArtistsNames(artists: [SPTPartialArtist]!) -> String {
         
