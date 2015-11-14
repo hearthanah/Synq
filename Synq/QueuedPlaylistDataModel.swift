@@ -12,8 +12,13 @@ class QueuedPlaylistDataModel {
     // MARK: - Properties
     
     private var trackInfoArr:[TrackInfo]
+    private var songVC: ActiveSongVC?
     
     // MARK: - Methods
+    
+    func setSongVC (songVC: ActiveSongVC) {
+        self.songVC = songVC
+    }
     
     // returns an dictionary with the track's info accessable as AnyObject
     // type values by a string key
@@ -22,7 +27,6 @@ class QueuedPlaylistDataModel {
     //    "trackName": String
     //    "artistNames": String
     //    "albumImage": UIImage
-
     func getInfoForTrackAtIndex(index: Int) -> [String: AnyObject] {
         return trackInfoArr[index].getTrackInfo()
     }
@@ -56,7 +60,16 @@ class QueuedPlaylistDataModel {
     }
     
     func pushNewTrack(track: SPTPartialTrack, trackImage: UIImage) {
+        
+        let wasEmpty = trackInfoArr.isEmpty
+        
         self.trackInfoArr.append(TrackInfo(track: track, trackImage: trackImage))
+        
+        // if the playlist was empty when adding the track restart the player with the new song
+        if wasEmpty {
+            let uri = getURIForCurrentTrack()
+            songVC!.changeToSongWithURI(uri)
+        }
     }
     
     func removeTrackInfoAtIndex(index: Int) {
@@ -74,6 +87,7 @@ class QueuedPlaylistDataModel {
     // MARK: - Initializers
     
     init() {
+        self.songVC = nil
         self.trackInfoArr = [TrackInfo]()
     }
 }

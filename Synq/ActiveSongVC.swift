@@ -22,11 +22,13 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
 
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
-    let playlist:QueuedPlaylistDataModel = QueuedPlaylistDataModel()
+    let playlist:QueuedPlaylistDataModel? = QueuedPlaylistDataModel()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playlist!.setSongVC(self)
         
         playBtnLabel.text = "Pause"
 
@@ -41,8 +43,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if playlist.count() != 0 {
-            let currentTrackURI = playlist.getURIForCurrentTrack()
+        if playlist!.count() != 0 {
+            let currentTrackURI = playlist!.getURIForCurrentTrack()
             updateImageAndLabelsForTrackURI(currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
         } else {
             self.image.image = UIImage()
@@ -65,7 +67,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     // When the track stops start playing the next track
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: NSURL!) {
-        let spotifyURI:NSURL! = playlist.getURIForNextTrack()
+        let spotifyURI:NSURL! = playlist!.getURIForNextTrack()
         if (spotifyURI == nil) {
             // if there isn't another track to be played inform the user
             self.image.image = UIImage()
