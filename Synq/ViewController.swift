@@ -128,7 +128,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         if (segue.identifier == "ShowActiveSongVC") {
             let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
             
-            sleep(1);
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
             
