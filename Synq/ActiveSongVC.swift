@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
+class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var trackLabel: UILabel!
@@ -27,16 +27,16 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
         super.viewDidLoad()
         
         playBtnLabel.text = "Pause"
-        
+
         // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
+            player?.playbackDelegate = self
             if player!.currentTrackURI != nil {
                 updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
             }
         }
         
         self.navigationItem.setHidesBackButton(true, animated:true);
-
     }
 
     override func didReceiveMemoryWarning() {
