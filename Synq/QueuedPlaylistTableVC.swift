@@ -14,12 +14,15 @@ class QueuedPlaylistTableVC: UITableViewController {
     var newTrack: SPTPartialTrack? = nil
     var spotifyAuthenticator: SPTAuth? = nil
     var albumImage: UIImage? = nil
-    let reuseIdentifier = "QueuedCell"
+    let reuseIdentifier: String = "QueuedCell"
+    
+    let indexOfActiveSongVC: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if (newTrack != nil) {
+            
             var trackImage = UIImage()
             if ( self.albumImage != nil ) {
                 trackImage = self.albumImage!
@@ -28,24 +31,20 @@ class QueuedPlaylistTableVC: UITableViewController {
             playlist?.pushNewTrack(newTrack!, trackImage: trackImage)
             
             self.tableView.reloadData()
-        } else {
-            print("nil track", newTrack)
-        }
-        
-        if (playlist == nil) {
-            print("nil playlist")
         }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "Queued Playlist"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -71,8 +70,6 @@ class QueuedPlaylistTableVC: UITableViewController {
         cell.artistLabel.text = (trackInfoDict["artistName"] as! String)
         cell.imageView?.image = (trackInfoDict["albumImage"] as! UIImage)
         
-        print("track info dict", trackInfoDict)
-
         return cell
     }
 

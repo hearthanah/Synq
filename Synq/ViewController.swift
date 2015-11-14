@@ -52,10 +52,12 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         loginWithSpotifySession(session)
     }
     
+    // TODO: - display login failures in the UI?
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
         print("login cancelled")
     }
     
+    // TODO: - display login failures in the UI?
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         print("login failed")
         print(error)
@@ -86,8 +88,6 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     }
     
     func useLoggedInPermissions() {
-        let spotifyURI = "spotify:track:1WJk986df8mpqpktoktlce"
-        player!.playURIs([NSURL(string: spotifyURI)!], withOptions: nil, callback: nil)
     }
     
     // get the album image, track name, and artist name for the track that's playing

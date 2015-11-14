@@ -8,26 +8,49 @@
 
 import UIKit
 
-class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
+class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var playBtnLabel: UILabel!
     
+    @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
+    }
+    
+    let isHostPhone: Bool = true
+
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
-    let playlist:QueuedPlaylistDataModel = QueuedPlaylistDataModel()
+    let playlist:QueuedPlaylistDataModel? = QueuedPlaylistDataModel()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playlist!.setSongVC(self)
+        
+        playBtnLabel.text = "Pause"
 
         // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
-            if player!.currentTrackURI != nil {
-                updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
-            }
-        }        
+            player?.playbackDelegate = self
+        }
+        
+        // Make sure that when the view loads the info for the current track is displayed
+        self.navigationItem.setHidesBackButton(true, animated:true);
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if playlist!.count() != 0 {
+            let currentTrackURI = playlist!.getURIForCurrentTrack()
+            updateImageAndLabelsForTrackURI(currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+        } else {
+            self.image.image = UIImage()
+            self.artistLabel.text = "No song in queue"
+            self.trackLabel.text = "No song in queue"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +64,35 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
         }
     }
-
+    
+    // When the track stops start playing the next track
+    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: NSURL!) {
+        let spotifyURI:NSURL! = playlist!.getURIForNextTrack()
+        if (spotifyURI == nil) {
+            // if there isn't another track to be played inform the user
+            self.image.image = UIImage()
+            self.artistLabel.text = "No song in queue"
+            self.trackLabel.text = "No song in queue"
+        } else {
+            changeToSongWithURI(spotifyURI)
+        }
+    }
+    
+    func changeToSongWithURI(uri: NSURL!) {
+        // only the host phone should be playing music
+        if (isHostPhone) {
+            self.player?.playURIs([uri], withOptions: nil, callback: nil)
+        }
+        
+        // All phones need to update the image and labels
+        updateImageAndLabelsForTrackURI(uri, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+    }
     
     func updateImageAndLabelsForTrackURI(trackURI: NSURL!, imageView: UIImageView!, artistLabel: UILabel!, trackLabel: UILabel! ) {
-        if player!.currentTrackURI != nil {
-            let currentTrackURI = player!.currentTrackURI
+        if trackURI != nil {
             let countryCode = "US" // as per ISO 3166-1
             
-            SPTTrack.trackWithURI(currentTrackURI, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error , trackObject) -> Void in
+            SPTTrack.trackWithURI(trackURI, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error , trackObject) -> Void in
                 let track:SPTTrack! = trackObject as! SPTTrack!
                 
                 if (track != nil) {
@@ -66,7 +110,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
                     self.setImage(imageView, imageURL: imageURL)
                     
                 } else {
-                    print("track is nil")
+                    print("In updateImageAndLabelsForTrackURI in ActiveSongVC:")
                     print(error)
                 }
             }
@@ -85,6 +129,22 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate{
             }
         }
     }
+    
+    
+    @IBAction func setPlaySatus(sender: AnyObject) {
+    
+        if (self.player?.isPlaying == true) {
+            
+            self.player?.setIsPlaying(false, callback: nil)
+            playBtnLabel.text = "Play"
+        }else{
+
+            self.player?.setIsPlaying(true, callback: nil)
+            playBtnLabel.text = "Pause"
+            
+        }
+    }
+
     
     func getArtistsNames(artists: [SPTPartialArtist]!) -> String {
         
