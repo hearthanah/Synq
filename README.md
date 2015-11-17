@@ -59,4 +59,13 @@ of the track items returned by SPTSearch
 Differences: (from App Idea Paper)
 Don't have a synchronized playlist. Instead we implemented a local playlist. This keeps data of the track URI, track name, artist, and image. From here we can play tracks using the Track URI. This version has everything except except for the shared playlist and vetoing songs. We thought that these features were more important than implementing the shared network we mentioned in the App Idea Paper, since the networked vetoing and playlist will require them.
 
+
+
+FINAL:
+Contributions:
+Matthew Carpenter:
+-Set up app to use an app on Heroku instead of on localhost using https://github.com/simontaen/SpotifyTokenSwap.git
+-Fixed linker error when trying to build on actual phone by disabling ENABLE_BITCODE setting in Synq project in Xcode.
+-Set up ATS in plist to allow InsecureHTTPLoads from cloudfront.net as specified by the spotify employee here: https://github.com/spotify/ios-sdk/issues/417
+
 RELEASE: tba
