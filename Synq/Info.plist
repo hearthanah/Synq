@@ -4,11 +4,9 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>localhost:1234</key>
+			<key>cloudfront.net</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
