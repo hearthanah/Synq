@@ -5,8 +5,10 @@ Synq, an iOS music player application. In the works.
 Here is where we got the resource to bypass Transport Security Exceptions
 http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
 
+Spotify token swap server is now run remotely on heroku based on the repo:
+https://github.com/simontaen/SpotifyTokenSwap.git
 
-INSTRUCTIONS TO RUN SPOTIFY TOKEN
+OUTDATED:INSTRUCTIONS TO RUN SPOTIFY TOKEN
 ```
 $ gem install sinatra
 ```
