@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F8z-pP-1ca">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="F8z-pP-1ca">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -29,7 +29,7 @@
                                 <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-Pb-3oz">
-                                <rect key="frame" x="90" y="333" width="194" height="51"/>
+                                <rect key="frame" x="90" y="333" width="194" height="130"/>
                                 <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-Ee-xkg">
@@ -55,6 +55,16 @@
                                 </state>
                                 <connections>
                                     <segue destination="3kf-FX-MmB" kind="show" identifier="ShowActiveSongVC" id="eSa-3n-LHv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRE-M8-DQQ">
+                                <rect key="frame" x="93" y="413" width="188" height="30"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Join a Synq Playlist">
+                                    <color key="titleColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinPlaylistBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uJb-NX-5oQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -151,6 +161,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;playlist-identifier&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPu-sq-yYn">
+                                <rect key="frame" x="20" y="72" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -169,6 +185,7 @@
                         <outlet property="artistLabel" destination="pyv-8M-PN3" id="gPa-j9-UhU"/>
                         <outlet property="image" destination="998-Rh-F3e" id="Lga-At-TLq"/>
                         <outlet property="playBtnLabel" destination="SWu-zH-IW4" id="9An-a0-2aj"/>
+                        <outlet property="playlistIdentifier" destination="rPu-sq-yYn" id="qmk-nu-m3v"/>
                         <outlet property="trackLabel" destination="UHd-oZ-GPj" id="nvT-Wy-T1h"/>
                     </connections>
                 </viewController>

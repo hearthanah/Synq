@@ -12,8 +12,8 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     let kClientID = "4158c76252d8498687bd983aca90a2bc"
     let kCallbackURL = "synq-app-login://callback"
-    let kTokenSwapURL = "http://localhost:1234/swap"
-    let kTokenRefreshURL = "http://localhost:1234/refresh"
+    let kTokenSwapURL = "https://young-tundra-9211.herokuapp.com/swap"
+    let kTokenRefreshURL = "https://young-tundra-9211.herokuapp.com/refresh"
 
     @IBOutlet weak var hideButton: UIView!
     @IBOutlet weak var hideButtonLogin: UIView!
@@ -35,6 +35,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         spotifyAuthenticationViewController.definesPresentationContext = true
         presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
+    
+    @IBAction func joinPlaylistBtnAction(sender: AnyObject) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
