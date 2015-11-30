@@ -36,6 +36,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
     
+    @IBAction func joinPlaylistBtnAction(sender: AnyObject) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

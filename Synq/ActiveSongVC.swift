@@ -14,6 +14,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playBtnLabel: UILabel!
+    @IBOutlet weak var playlistIdentifier: UILabel!
+    
     
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
