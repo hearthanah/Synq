@@ -174,9 +174,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="gi1-gv-uZE"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Ki-p1-QNd">
                             <connections>
-                                <segue destination="7Yp-OT-LGf" kind="show" identifier="ShowSongSearch" id="Pic-AO-9me">
-                                    <nil key="action"/>
-                                </segue>
+                                <action selector="addBtnAction:" destination="3kf-FX-MmB" id="nAe-dk-cEI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -187,6 +185,8 @@
                         <outlet property="playBtnLabel" destination="SWu-zH-IW4" id="9An-a0-2aj"/>
                         <outlet property="playlistIdentifier" destination="rPu-sq-yYn" id="qmk-nu-m3v"/>
                         <outlet property="trackLabel" destination="UHd-oZ-GPj" id="nvT-Wy-T1h"/>
+                        <segue destination="XJz-2J-qTv" kind="show" identifier="ShowInitialSearch" id="iYl-f7-o3N"/>
+                        <segue destination="7Yp-OT-LGf" kind="show" identifier="ShowSongSearch" id="j9S-Pd-PP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46a-fr-11D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -500,8 +500,69 @@
             </objects>
             <point key="canvasLocation" x="1911.5" y="1258.5"/>
         </scene>
+        <!--Initial SearchVC-->
+        <scene sceneID="TDS-dk-p3h">
+            <objects>
+                <viewController id="XJz-2J-qTv" customClass="InitialSearchVC" customModule="Synq" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ABo-LT-rvB"/>
+                        <viewControllerLayoutGuide type="bottom" id="uHb-Ug-A1y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xjC-2H-cPI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4T-d4-ZkQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GI7-vH-noi">
+                                        <rect key="frame" x="271" y="8" width="85" height="30"/>
+                                        <color key="backgroundColor" red="0.67843137249999996" green="1" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="m7E-E6-RZW" kind="show" identifier="ShowSearchResults" id="2mc-gX-AOu"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trk-Y7-PJh">
+                                        <rect key="frame" x="21" y="8" width="242" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input a track to view a list of songs you can add to your playlist." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFF-dl-v0p">
+                                <rect key="frame" x="20" y="303" width="335" height="137"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="PHu-l2-uIN" id="TdM-2K-A7q"/>
+                        <outlet property="searchTextField" destination="trk-Y7-PJh" id="x8G-xQ-Wrv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4M4-ae-1Hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="PHu-l2-uIN">
+                    <connections>
+                        <outlet property="delegate" destination="XJz-2J-qTv" id="n2M-Uv-HFb"/>
+                        <outlet property="searchContentsController" destination="XJz-2J-qTv" id="2VY-Jp-2Qw"/>
+                        <outlet property="searchResultsDataSource" destination="XJz-2J-qTv" id="Ivj-B0-ZF9"/>
+                        <outlet property="searchResultsDelegate" destination="XJz-2J-qTv" id="StV-ew-0jJ"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2693.5" y="-655.5"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5Ds-xt-mtL"/>
+        <segue reference="2mc-gX-AOu"/>
     </inferredMetricsTieBreakers>
 </document>
