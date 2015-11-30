@@ -20,6 +20,16 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
     
+    @IBAction func addBtnAction(sender: AnyObject) {
+        if playlist?.count() == 0 {
+            // Playlist is empty, so go to the InitialSearchVC to tell the user how to add a song
+            performSegueWithIdentifier("ShowInitialSearch", sender: self)
+        } else {
+            // Playlist is not empty, so display current playlist when searching
+            performSegueWithIdentifier("ShowSongSearch", sender: self)
+        }
+    }
+    
     let isHostPhone: Bool = true
 
     var player:SPTAudioStreamingController? = nil
@@ -173,6 +183,11 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
             let queuedPlaylistTVC: QueuedPlaylistTableVC = segue.destinationViewController as! QueuedPlaylistTableVC
             
             queuedPlaylistTVC.playlist = self.playlist
+        } else if (segue.identifier == "ShowInitialSearch") {
+            let initialSearchVC:InitialSearchVC = segue.destinationViewController as! InitialSearchVC
+            
+            initialSearchVC.spotifyAuthenticator = self.spotifyAuthenticator
+            initialSearchVC.playlist = self.playlist
         }
     }
 
