@@ -91,6 +91,20 @@ class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             
             searchResultsVC.playlist = self.playlist
         }
+        
+        if (segue.identifier == "SearchToSongInfo") {
+            // Get the destination view controller
+            let songInfoVC:SongInfoVC = segue.destinationViewController as! SongInfoVC
+            
+            let resultIndex = self.queuedPlaylistTableView.indexPathForSelectedRow!.row
+            
+            // Pass in the data model for the row selected
+            let trackInfoDict = playlist!.getInfoForTrackAtIndex(resultIndex)
+            songInfoVC.track = (trackInfoDict["trackName"] as! String)
+            songInfoVC.artist = (trackInfoDict["artistName"] as! String)
+            songInfoVC.imageV = (trackInfoDict["albumImage"] as! UIImage)
+            
+        }
     }
 
 }

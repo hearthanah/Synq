@@ -14,6 +14,9 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kCallbackURL = "synq-app-login://callback"
     let kTokenSwapURL = "https://young-tundra-9211.herokuapp.com/swap"
     let kTokenRefreshURL = "https://young-tundra-9211.herokuapp.com/refresh"
+    
+    let playlistBaseURL = "http://localhost:3000"
+    let playlistName:String = "testPL1"
 
     @IBOutlet weak var hideButton: UIView!
     @IBOutlet weak var hideButtonLogin: UIView!
@@ -126,6 +129,29 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         }
     }
     
+    func createRemotePlaylist() {
+        let postNameParam = "name=" + self.playlistName
+        
+        let requestURLString = self.playlistBaseURL + "/create"
+        let requestURL = NSURL(string: requestURLString)
+        
+        
+        let request = NSMutableURLRequest(URL: requestURL!)
+        request.HTTPMethod = "POST"
+        
+        request.HTTPBody = postNameParam.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if (error != nil) {
+                print("An error occured when creating the playlist: \n")
+                print(error)
+            } 
+        }
+        task.resume()
+
+    }
+        
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -135,6 +161,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
             
+            createRemotePlaylist()
         }
     }
 

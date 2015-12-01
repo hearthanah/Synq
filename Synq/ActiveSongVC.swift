@@ -16,6 +16,11 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBOutlet weak var playBtnLabel: UILabel!
     @IBOutlet weak var playlistIdentifier: UILabel!
     
+    let playlistBaseURL = "http://localhost:3000"
+    let playlistName:String = "testPL1"
+    var versionStr:NSString = NSString()
+
+    
     
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
@@ -44,13 +49,14 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         
         playBtnLabel.text = "Pause"
 
-        // Make sure that when the view loads the info for the current track is displayed
         if player != nil {
             player?.playbackDelegate = self
         }
         
-        // Make sure that when the view loads the info for the current track is displayed
         self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        // When the view loads, and the playlist has been created start polling for updates
+        self.pollForUpdates()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,6 +81,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         if player!.currentTrackURI != nil {
             updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
         }
+        //print("CHANGED TRACK")
     }
     
     // When the track stops start playing the next track
@@ -168,6 +175,76 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         return artistsString
         
     }
+    
+    func pollForUpdates() {
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
+            while (true) {
+                //check the version number
+                let requestURLString = self.playlistBaseURL + "/version?name=" + self.playlistName
+                let requestURL = NSURL(string: requestURLString)
+                
+                let versionSession = NSURLSession.sharedSession()
+                let checkVersion = versionSession.dataTaskWithURL(requestURL!) { (data, response, error) -> Void in
+                    if (error != nil) {
+                        print("An error occured when checking the version number: \n")
+                        print(error)
+                    } else {
+                        do {
+                            // get the result
+                            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                            if jsonResult != nil {
+                                if let date = jsonResult!["date"] as? NSString {
+                                    if self.versionStr != date {
+                                        self.versionStr = date
+                                        // Playlist has been updated so pull it
+                                        let requestURLString = self.playlistBaseURL + "/playlist?name=" + self.playlistName
+                                        let requestURL = NSURL(string: requestURLString)
+                                        
+                                        let playlistSession = NSURLSession.sharedSession()
+                                        let playlistTask = playlistSession.dataTaskWithURL(requestURL!) { (data, response, error) -> Void in
+                                            if (error != nil) {
+                                                print("An error occured when trying to update the playlist: \n")
+                                                print(error)
+                                            } else {
+                                                do {
+                                                    // get the result
+                                                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                                                    if jsonResult != nil {
+                                                        if let tracks = jsonResult!["tracks"] as? NSArray {
+                                                            for (var i = 0; i < tracks.count; i++){
+                                                                //print ("track" , i)
+                                                                //print (tracks[i])
+                                                                if let trackDict = tracks[i] as? NSDictionary {
+                                                                    let trackURI = trackDict["uri"] as! String
+                                                                    let vetoCount = trackDict["veto_count"] as! Int
+                                                                    
+                                                                    self.playlist?.addTrackFromURI(trackURI, vetoCount: vetoCount, accessToken: self.spotifyAuthenticator?.session.accessToken)
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } catch {
+                                                    print("error converting json for playlist")
+                                                }
+                                            }
+                                        }
+                                        playlistTask.resume()
+                                    }
+                                }
+                            }
+                        } catch {
+                            print("error converting JSON for version")
+                        }
+                    }
+                    
+                }
+                checkVersion.resume()
+                // wait 4 seconds before checking again
+                sleep(4)
+            }
+        }
+    }
+
 
     // MARK: - Navigation
 
