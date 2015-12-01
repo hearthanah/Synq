@@ -72,6 +72,26 @@ class QueuedPlaylistTableVC: UITableViewController {
         
         return cell
     }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "QueuedToSongInfo") {
+            // Get the destination view controller
+            let songInfoVC:SongInfoVC = segue.destinationViewController as! SongInfoVC
+            
+            let resultIndex = self.tableView.indexPathForSelectedRow!.row
+            
+            // Pass in the data model for the row selected
+            let trackInfoDict = playlist!.getInfoForTrackAtIndex(resultIndex)
+            songInfoVC.track = (trackInfoDict["trackName"] as! String)
+            songInfoVC.artist = (trackInfoDict["artistName"] as! String)
+            songInfoVC.imageV = (trackInfoDict["albumImage"] as! UIImage)
+            
+        }
+    }
+
+    
 
 
 }

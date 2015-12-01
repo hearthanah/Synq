@@ -213,7 +213,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wjh-BB-4xN" id="Uu8-kI-YlQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7X-uP-r3n">
@@ -237,7 +237,7 @@
                                             <outlet property="albumImageView" destination="v7X-uP-r3n" id="H7Z-fJ-2hV"/>
                                             <outlet property="artistLabel" destination="3tF-wO-3j8" id="dCV-wf-mmG"/>
                                             <outlet property="trackLabel" destination="JPK-Qv-4WT" id="9mq-as-XAN"/>
-                                            <segue destination="V02-gr-fZW" kind="show" id="2H1-7k-kfX"/>
+                                            <segue destination="V02-gr-fZW" kind="show" identifier="SearchToSongInfo" id="2H1-7k-kfX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -335,7 +335,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6pK-DF-hEK" id="WaE-w8-Nxz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksH-dJ-cA9">
@@ -494,7 +494,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kfg-pv-ofY" id="a2Y-03-ZOH">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEV-dH-U1M">
@@ -518,7 +518,7 @@
                                     <outlet property="albumImageView" destination="mEV-dH-U1M" id="qua-Oi-y36"/>
                                     <outlet property="artistLabel" destination="j6l-fz-er4" id="kjV-KZ-dZC"/>
                                     <outlet property="trackLabel" destination="20m-t9-vsv" id="sER-sA-eEB"/>
-                                    <segue destination="V02-gr-fZW" kind="show" id="82w-Xb-ccb"/>
+                                    <segue destination="V02-gr-fZW" kind="show" identifier="QueuedToSongInfo" id="82w-Xb-ccb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -605,8 +605,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2H1-7k-kfX"/>
         <segue reference="asj-2Y-PUC"/>
         <segue reference="oVz-fc-r0O"/>
+        <segue reference="82w-Xb-ccb"/>
     </inferredMetricsTieBreakers>
 </document>

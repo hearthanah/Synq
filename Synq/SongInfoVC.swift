@@ -14,10 +14,17 @@ class SongInfoVC: UIViewController {
     @IBOutlet weak var trackLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     
+    
+    var track: String = ""
+    var imageV: UIImage = UIImage()
+    var artist: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.imageView.image = imageV
+        self.trackLabel.text = track
+        self.artistLabel.text = artist
         // Do any additional setup after loading the view.
     }
 
