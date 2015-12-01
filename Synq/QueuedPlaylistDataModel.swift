@@ -13,6 +13,9 @@ class QueuedPlaylistDataModel {
     
     private var trackInfoArr:[TrackInfo]
     private var songVC: ActiveSongVC?
+    let playlistBaseURL = "http://localhost:3000"
+    let playlistName:String = "testPL1"
+
     
     // MARK: - Methods
     
@@ -61,8 +64,12 @@ class QueuedPlaylistDataModel {
     
     func pushNewTrack(track: SPTPartialTrack, trackImage: UIImage) {
         
+        if (trackWithURI(track.uri) != nil) {
+            return
+        }
+        
         let wasEmpty = trackInfoArr.isEmpty
-        print("pushing, was empty?", wasEmpty, TrackInfo(track: track, trackImage: trackImage))
+        //print("pushing, was empty?", wasEmpty, TrackInfo(track: track, trackImage: trackImage))
         self.trackInfoArr.append(TrackInfo(track: track, trackImage: trackImage))
         
         // if the playlist was empty when adding the track restart the player with the new song
@@ -70,6 +77,24 @@ class QueuedPlaylistDataModel {
             let uri = getURIForCurrentTrack()
             songVC!.changeToSongWithURI(uri)
         }
+        
+        var requestURLString = self.playlistBaseURL + "/add?name=" + self.playlistName
+        let uriParam = "&track_uri=" + String(track.uri)
+        requestURLString += uriParam
+        
+        let requestURL = NSURL(string: requestURLString)
+        
+        let request = NSMutableURLRequest(URL: requestURL!)
+        request.HTTPMethod = "PATCH"
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if (error != nil) {
+                print("An error occured when creating the playlist: \n")
+                print(error)
+            }
+        }
+        task.resume()
     }
     
     func removeTrackInfoAtIndex(index: Int) {
@@ -131,7 +156,24 @@ class QueuedPlaylistDataModel {
     }
     
     private func popPlayedTrack() {
+        let requestURLString = self.playlistBaseURL + "/remove?name=" + self.playlistName
+        let requestURL = NSURL(string: requestURLString)
+        
+        let request = NSMutableURLRequest(URL: requestURL!)
+        request.HTTPMethod = "PATCH"
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if (error != nil) {
+                print("An error occured when creating the playlist: \n")
+                print(error)
+            }
+        }
+        task.resume()
+
         self.trackInfoArr.removeFirst()
+        
+        
     }
     
     

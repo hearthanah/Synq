@@ -81,7 +81,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         if player!.currentTrackURI != nil {
             updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
         }
-        print("CHANGED TRACK")
+        //print("CHANGED TRACK")
     }
     
     // When the track stops start playing the next track
@@ -212,8 +212,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                                                     if jsonResult != nil {
                                                         if let tracks = jsonResult!["tracks"] as? NSArray {
                                                             for (var i = 0; i < tracks.count; i++){
-                                                                print ("track" , i)
-                                                                print (tracks[i])
+                                                                //print ("track" , i)
+                                                                //print (tracks[i])
                                                                 if let trackDict = tracks[i] as? NSDictionary {
                                                                     let trackURI = trackDict["uri"] as! String
                                                                     let vetoCount = trackDict["veto_count"] as! Int
