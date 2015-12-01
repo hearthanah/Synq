@@ -237,6 +237,7 @@
                                             <outlet property="albumImageView" destination="v7X-uP-r3n" id="H7Z-fJ-2hV"/>
                                             <outlet property="artistLabel" destination="3tF-wO-3j8" id="dCV-wf-mmG"/>
                                             <outlet property="trackLabel" destination="JPK-Qv-4WT" id="9mq-as-XAN"/>
+                                            <segue destination="V02-gr-fZW" kind="show" id="2H1-7k-kfX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -437,7 +438,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4P-Pz-ZM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2725.5" y="1264.5"/>
+            <point key="canvasLocation" x="3471.5" y="1232.5"/>
+        </scene>
+        <!--Song InfoVC-->
+        <scene sceneID="QLU-re-qar">
+            <objects>
+                <viewController id="V02-gr-fZW" customClass="SongInfoVC" customModule="Synq" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gOk-62-XVo"/>
+                        <viewControllerLayoutGuide type="bottom" id="mI9-b6-Pan"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="awt-7h-ny5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U62-HJ-hhk">
+                                <rect key="frame" x="37" y="163" width="300" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;track&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSz-fA-qed">
+                                <rect key="frame" x="20" y="501" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;artist&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGr-In-ygQ">
+                                <rect key="frame" x="20" y="530" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="DGr-In-ygQ" id="xje-Zn-S5L"/>
+                        <outlet property="imageView" destination="U62-HJ-hhk" id="ZOk-aq-CYe"/>
+                        <outlet property="trackLabel" destination="LSz-fA-qed" id="1iS-Ty-hOS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekj-8K-p7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2579.5" y="2045.5"/>
         </scene>
         <!--Queued Playlist TableVC-->
         <scene sceneID="bF2-a1-34a">
@@ -476,6 +518,7 @@
                                     <outlet property="albumImageView" destination="mEV-dH-U1M" id="qua-Oi-y36"/>
                                     <outlet property="artistLabel" destination="j6l-fz-er4" id="kjV-KZ-dZC"/>
                                     <outlet property="trackLabel" destination="20m-t9-vsv" id="sER-sA-eEB"/>
+                                    <segue destination="V02-gr-fZW" kind="show" id="82w-Xb-ccb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -498,7 +541,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyt-yL-Vbm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dtT-Mk-V7I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1911.5" y="1258.5"/>
+            <point key="canvasLocation" x="1911.5" y="1298.5"/>
         </scene>
         <!--Initial SearchVC-->
         <scene sceneID="TDS-dk-p3h">
@@ -562,7 +605,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Ds-xt-mtL"/>
-        <segue reference="2mc-gX-AOu"/>
+        <segue reference="2H1-7k-kfX"/>
+        <segue reference="asj-2Y-PUC"/>
+        <segue reference="oVz-fc-r0O"/>
     </inferredMetricsTieBreakers>
 </document>
