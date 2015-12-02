@@ -13,7 +13,7 @@ class QueuedPlaylistDataModel {
     
     private var trackInfoArr:[TrackInfo]
     private var songVC: ActiveSongVC?
-    let playlistBaseURL = "http://localhost:3000"
+    let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
     let playlistName:String = "testPL1"
 
     
@@ -155,7 +155,7 @@ class QueuedPlaylistDataModel {
         return sameTrack
     }
     
-    private func popPlayedTrack() {
+    func popPlayedTrack() {
         let requestURLString = self.playlistBaseURL + "/remove?name=" + self.playlistName
         let requestURL = NSURL(string: requestURLString)
         

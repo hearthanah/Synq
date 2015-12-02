@@ -16,13 +16,18 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBOutlet weak var playBtnLabel: UILabel!
     @IBOutlet weak var playlistIdentifier: UILabel!
     
-    let playlistBaseURL = "http://localhost:3000"
+    let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
     let playlistName:String = "testPL1"
     var versionStr:NSString = NSString()
 
     
     
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func vetoBtnAction(sender: AnyObject) {
+        // stop the player so that removing the song works properly
+        player!.stop(nil)
     }
     
     @IBAction func addBtnAction(sender: AnyObject) {

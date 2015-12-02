@@ -15,7 +15,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kTokenSwapURL = "https://young-tundra-9211.herokuapp.com/swap"
     let kTokenRefreshURL = "https://young-tundra-9211.herokuapp.com/refresh"
     
-    let playlistBaseURL = "http://localhost:3000"
+    let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
     let playlistName:String = "testPL1"
 
     @IBOutlet weak var hideButton: UIView!
