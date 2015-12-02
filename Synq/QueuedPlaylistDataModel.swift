@@ -14,7 +14,7 @@ class QueuedPlaylistDataModel {
     private var trackInfoArr:[TrackInfo]
     private var songVC: ActiveSongVC?
     let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
-    let playlistName:String = "testPL1"
+    let playlistName:String = "testPL2"
 
     
     // MARK: - Methods

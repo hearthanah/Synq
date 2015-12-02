@@ -17,7 +17,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBOutlet weak var playlistIdentifier: UILabel!
     
     let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
-    let playlistName:String = "testPL1"
+    let playlistName:String = "testPL2"
     var versionStr:NSString = NSString()
 
     

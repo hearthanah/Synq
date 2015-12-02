@@ -65,6 +65,7 @@
                                 </state>
                                 <connections>
                                     <action selector="joinPlaylistBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uJb-NX-5oQ"/>
+                                    <segue destination="3kf-FX-MmB" kind="show" identifier="JoinActiveSongVC" id="TNU-ji-KAE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -608,6 +609,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="TNU-ji-KAE"/>
         <segue reference="5Ds-xt-mtL"/>
         <segue reference="82w-Xb-ccb"/>
         <segue reference="asj-2Y-PUC"/>

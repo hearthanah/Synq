@@ -16,7 +16,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kTokenRefreshURL = "https://young-tundra-9211.herokuapp.com/refresh"
     
     let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
-    let playlistName:String = "testPL1"
+    let playlistName:String = "testPL2"
 
     @IBOutlet weak var hideButton: UIView!
     @IBOutlet weak var hideButtonLogin: UIView!
@@ -162,6 +162,12 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
             
             createRemotePlaylist()
+        } else if (segue.identifier == "JoinActiveSongVC") {
+            let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
+            
+            activeSongVC.player = self.player
+            activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
+            
         }
     }
 
