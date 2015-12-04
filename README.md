@@ -80,4 +80,4 @@ Hanah Luong:
 -Song Preview View capabiliies from Search Results View and previously Queued songs view.
 -In Class Presentation. Credits to PowToons.com web application.
 
-RELEASE: tba
+
