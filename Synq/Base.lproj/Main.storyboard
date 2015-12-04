@@ -28,10 +28,6 @@
                                 <rect key="frame" x="67" y="272" width="240" height="47"/>
                                 <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-Pb-3oz">
-                                <rect key="frame" x="90" y="333" width="194" height="130"/>
-                                <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <button contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-Ee-xkg">
                                 <rect key="frame" x="94" y="281" width="187" height="30"/>
                                 <color key="backgroundColor" red="0.11643781565656564" green="0.11643781565656564" blue="0.11643781565656564" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,18 +43,22 @@
                                     <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6cg-Wc-6Sf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGo-Pb-3oz">
+                                <rect key="frame" x="90" y="334" width="194" height="219"/>
+                                <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HV-LN-jXL">
-                                <rect key="frame" x="93" y="344" width="188" height="30"/>
+                                <rect key="frame" x="93" y="434" width="188" height="30"/>
                                 <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Create a Synq Playlist">
                                     <color key="titleColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3kf-FX-MmB" kind="show" identifier="ShowActiveSongVC" id="eSa-3n-LHv"/>
+                                    <action selector="createPlaylistBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gqM-el-uWU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRE-M8-DQQ">
-                                <rect key="frame" x="93" y="413" width="188" height="30"/>
+                                <rect key="frame" x="93" y="503" width="188" height="30"/>
                                 <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Join a Synq Playlist">
                                     <color key="titleColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,19 +67,40 @@
                                     <action selector="joinPlaylistBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uJb-NX-5oQ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-sZ-8q4">
+                                <rect key="frame" x="92" y="372" width="191" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name the playlist:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6B2-HK-Thb">
+                                <rect key="frame" x="94" y="343" width="187" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.78823529410000004" green="1" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;error-label&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkP-aV-9BX">
+                                <rect key="frame" x="20" y="118" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.046319447729999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.187204072" green="0.187204072" blue="0.187204072" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="hO0-aL-pbl"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="errorLabel" destination="RkP-aV-9BX" id="dBg-5g-SwE"/>
                         <outlet property="hideButton" destination="VGo-Pb-3oz" id="u9B-Lh-TlB"/>
                         <outlet property="hideButtonLogin" destination="Jql-7X-9yS" id="rfq-xw-1F4"/>
+                        <outlet property="playlistTextField" destination="5Uw-sZ-8q4" id="RhX-RT-XQJ"/>
+                        <segue destination="3kf-FX-MmB" kind="show" identifier="CreatePlaylist" id="igb-wd-4PX"/>
+                        <segue destination="3kf-FX-MmB" kind="show" identifier="JoinPlaylist" id="dbq-Ke-aQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.5" y="229.5"/>
+            <point key="canvasLocation" x="1074.5" y="13.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1PH-Hs-Aq0">
@@ -119,6 +140,9 @@
                                 <state key="normal" title="VETO">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="vetoBtnAction:" destination="3kf-FX-MmB" eventType="touchUpInside" id="POd-3b-4Lh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFK-Le-93W">
                                 <rect key="frame" x="87" y="565" width="200" height="30"/>
@@ -213,7 +237,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wjh-BB-4xN" id="Uu8-kI-YlQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7X-uP-r3n">
@@ -335,7 +359,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6pK-DF-hEK" id="WaE-w8-Nxz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksH-dJ-cA9">
@@ -494,7 +518,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kfg-pv-ofY" id="a2Y-03-ZOH">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEV-dH-U1M">
@@ -605,8 +629,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="asj-2Y-PUC"/>
-        <segue reference="oVz-fc-r0O"/>
+        <segue reference="dbq-Ke-aQe"/>
+        <segue reference="5Ds-xt-mtL"/>
         <segue reference="82w-Xb-ccb"/>
+        <segue reference="asj-2Y-PUC"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     var spotifyAuthenticator:SPTAuth? = nil
     var listPage:SPTListPage? = nil
@@ -25,7 +25,7 @@ class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         // Do any additional setup after loading the view.
         self.queuedPlaylistTableView.delegate = self
         self.queuedPlaylistTableView.dataSource = self
-        
+        self.searchTextField.delegate = self
     }
     
     // Reload the table whenever the view appears, just incase the user is
@@ -44,6 +44,15 @@ class SongSearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // MARK: - Table view data source

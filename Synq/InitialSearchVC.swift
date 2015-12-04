@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitialSearchVC: UIViewController {
+class InitialSearchVC: UIViewController, UITextFieldDelegate {
     
     var spotifyAuthenticator:SPTAuth? = nil
     var playlist: QueuedPlaylistDataModel? = nil
@@ -19,6 +19,7 @@ class InitialSearchVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.searchTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +27,15 @@ class InitialSearchVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
 
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

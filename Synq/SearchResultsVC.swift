@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     var listPage:SPTListPage? = nil
     var spotifyAuthenticator:SPTAuth? = nil
@@ -22,6 +22,8 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var searchResultsTableView: UITableView!
         
     @IBAction func searchBtnAction(sender: AnyObject) {
+        self.view.endEditing(true)
+        
         let countryCode = "US"
         
         SPTSearch.performSearchWithQuery(searchTextField!.text, queryType: .QueryTypeTrack, accessToken: self.spotifyAuthenticator?.session.accessToken, market: countryCode) { (error, listPageObject) -> Void in
@@ -40,6 +42,7 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         // Do any additional setup after loading the view.
         self.searchResultsTableView.delegate = self
         self.searchResultsTableView.dataSource = self
+        self.searchTextField.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,8 +59,14 @@ class SearchResultsVC: UIViewController, UITableViewDataSource, UITableViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
     
-    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     // MARK: - Navigation
 

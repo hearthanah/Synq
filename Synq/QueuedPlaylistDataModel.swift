@@ -13,8 +13,9 @@ class QueuedPlaylistDataModel {
     
     private var trackInfoArr:[TrackInfo]
     private var songVC: ActiveSongVC?
-    let playlistBaseURL = "http://localhost:3000"
-    let playlistName:String = "testPL1"
+    let playlistBaseURL = "https://limitless-wildwood-7949.herokuapp.com"
+    var playlistName:String = ""
+    var isHostPhone = false
 
     
     // MARK: - Methods
@@ -23,6 +24,13 @@ class QueuedPlaylistDataModel {
         self.songVC = songVC
     }
     
+    func setName(name: String) {
+        self.playlistName = name
+    }
+    
+    func setIsHostPhone(isHostPhone: Bool) {
+        self.isHostPhone = isHostPhone
+    }
     // returns an dictionary with the track's info accessable as AnyObject
     // type values by a string key
     // Key value types
@@ -62,14 +70,12 @@ class QueuedPlaylistDataModel {
         }
     }
     
-    func pushNewTrack(track: SPTPartialTrack, trackImage: UIImage) {
-        
+    func pushNewTrackNonRemote(track: SPTPartialTrack, trackImage: UIImage) {
         if (trackWithURI(track.uri) != nil) {
             return
         }
         
         let wasEmpty = trackInfoArr.isEmpty
-        //print("pushing, was empty?", wasEmpty, TrackInfo(track: track, trackImage: trackImage))
         self.trackInfoArr.append(TrackInfo(track: track, trackImage: trackImage))
         
         // if the playlist was empty when adding the track restart the player with the new song
@@ -77,6 +83,9 @@ class QueuedPlaylistDataModel {
             let uri = getURIForCurrentTrack()
             songVC!.changeToSongWithURI(uri)
         }
+    }
+    func pushNewTrack(track: SPTPartialTrack, trackImage: UIImage) {
+        self.pushNewTrackNonRemote(track, trackImage: trackImage)
         
         var requestURLString = self.playlistBaseURL + "/add?name=" + self.playlistName
         let uriParam = "&track_uri=" + String(track.uri)
@@ -97,50 +106,40 @@ class QueuedPlaylistDataModel {
         task.resume()
     }
     
-    func removeTrackInfoAtIndex(index: Int) {
-        self.trackInfoArr.removeAtIndex(index)
-    }
-    
     func count() -> Int {
         return self.trackInfoArr.count
     }
 
-    func clearAllTracks() {
-        trackInfoArr.removeAll()
-        print("done clearing")
-    }
     
     // used for adding tracks remotely
     func addTrackFromURI(trackURI: String, vetoCount: Int, accessToken: String!) {
         
         let convertedURI: NSURL! = NSURL(string: trackURI)
 
-        if (trackWithURI(convertedURI) != nil) {
-            print("same track with uri", convertedURI)
-            return
-        }
+        if (trackWithURI(convertedURI) == nil) {
         
-        let countryCode = "US" // as per ISO 3166-1
-        var albumImageURL: NSURL! = NSURL!()
-        
-        SPTTrack.trackWithURI(convertedURI, accessToken: accessToken, market: countryCode)  { (error , trackObject) -> Void in
-            let track:SPTTrack! = trackObject as! SPTTrack!
+            let countryCode = "US" // as per ISO 3166-1
+            var albumImageURL: NSURL! = NSURL!()
             
-            if (track != nil) {
-                // get the image, then make the TrackInfo object
-                albumImageURL = track.album.largestCover.imageURL
-                let albumImageData = NSData(contentsOfURL: albumImageURL)
+            SPTTrack.trackWithURI(convertedURI, accessToken: accessToken, market: countryCode)  { (error , trackObject) -> Void in
+                let track:SPTTrack! = trackObject as! SPTTrack!
                 
-                var albumImageObject = UIImage()
-                if (albumImageData != nil) {
-                    albumImageObject = UIImage(data: albumImageData!)!
+                if (track != nil) {
+                    // get the image, then make the TrackInfo object
+                    albumImageURL = track.album.largestCover.imageURL
+                    let albumImageData = NSData(contentsOfURL: albumImageURL)
+                    
+                    var albumImageObject = UIImage()
+                    if (albumImageData != nil) {
+                        albumImageObject = UIImage(data: albumImageData!)!
+                    }
+                    let trackPartial = track as SPTPartialTrack
+                    self.pushNewTrackNonRemote(trackPartial, trackImage: albumImageObject)
+                    
+                } else {
+                    print("nil track in getTrackInfoForURI in TrackInfoRetrieverHelper:")
+                    print(error)
                 }
-                let trackPartial = track as SPTPartialTrack
-                self.pushNewTrack(trackPartial, trackImage: albumImageObject)
-                
-            } else {
-                print("nil track in getTrackInfoForURI in TrackInfoRetrieverHelper:")
-                print(error)
             }
         }
     }
@@ -155,27 +154,33 @@ class QueuedPlaylistDataModel {
         return sameTrack
     }
     
-    private func popPlayedTrack() {
-        let requestURLString = self.playlistBaseURL + "/remove?name=" + self.playlistName
-        let requestURL = NSURL(string: requestURLString)
+    func popPlayedTrack() {
         
-        let request = NSMutableURLRequest(URL: requestURL!)
-        request.HTTPMethod = "PATCH"
-        
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            if (error != nil) {
-                print("An error occured when creating the playlist: \n")
-                print(error)
+        // only one phone should be removing things from the DB
+        if (self.isHostPhone) {
+            let requestURLString = self.playlistBaseURL + "/remove?name=" + self.playlistName
+            let requestURL = NSURL(string: requestURLString)
+            
+            let request = NSMutableURLRequest(URL: requestURL!)
+            request.HTTPMethod = "PATCH"
+            
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+                if (error != nil) {
+                    print("An error occured when creating the playlist: \n")
+                    print(error)
+                }
             }
+            task.resume()
         }
-        task.resume()
 
         self.trackInfoArr.removeFirst()
-        
-        
     }
     
+    // removes a track from the playlist for a client phone
+    func clientRemoveTrack() {
+        self.trackInfoArr.removeFirst()
+    }
     
     // MARK: - Initializers
     
