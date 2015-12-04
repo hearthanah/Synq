@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate {
+class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPlaybackDelegate, UITextFieldDelegate {
     
     let kClientID = "4158c76252d8498687bd983aca90a2bc"
     let kCallbackURL = "synq-app-login://callback"
@@ -45,35 +45,36 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     
     @IBAction func createPlaylistBtnAction(sender: AnyObject) {
         // make sure the user actually input a name
-        if (playlistTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "") {
+        let name = playlistTextField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        if (name == "") {
             errorLabel.text = "Please input a name for the playlist"
         } else {
             // check to see if there is already a playlist for this name
-            checkPlaylistName(playlistTextField.text!)
+            checkPlaylistName(name)
             
             if (self.isValidName == true) {
                 // there is a playlist with the same name, so set the label to say that
                 errorLabel.text = "There is already a playlist with that name"
             } else {
                 // there is no playlist, so set the name and segue (which will create the playlist)
-                playlistName = playlistTextField.text!
+                playlistName = name
                 performSegueWithIdentifier("CreatePlaylist", sender: self)
             }
         }
     }
     
     @IBAction func joinPlaylistBtnAction(sender: AnyObject) {
-        //segue ID: JoinPlaylist
         // make sure the user actually input a name
-        if (playlistTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "") {
+        let name = playlistTextField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        if (name == "") {
             errorLabel.text = "Please input a name for the playlist"
         } else {
             // check to see if there is already a playlist for this name
-            checkPlaylistName(playlistTextField.text!)
+            checkPlaylistName(name)
             
             if (self.isValidName == true) {
                 // there is a playlist with that name, so join it
-                playlistName = playlistTextField.text!
+                playlistName = name
                 performSegueWithIdentifier("JoinPlaylist", sender: self)
             } else {
                 // there is no playlist, so set the error label to say that
@@ -90,6 +91,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         self.hideButton.layer.zPosition = 1
         self.hideButtonLogin.layer.zPosition = -1
         errorLabel.text = ""
+        playlistTextField.delegate = self
         
     }
     
@@ -247,6 +249,15 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
             }
         }
         patchTask.resume()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // MARK: - Navigation

@@ -101,8 +101,6 @@ class QueuedPlaylistDataModel {
             if (error != nil) {
                 print("An error occured when creating the playlist: \n")
                 print(error)
-            } else {
-                print("added track with uri: " + String(track.uri))
             }
         }
         task.resume()
@@ -112,19 +110,13 @@ class QueuedPlaylistDataModel {
         return self.trackInfoArr.count
     }
 
-    func clearAllTracks() {
-        trackInfoArr.removeAll()
-        print("done clearing")
-    }
     
     // used for adding tracks remotely
     func addTrackFromURI(trackURI: String, vetoCount: Int, accessToken: String!) {
         
         let convertedURI: NSURL! = NSURL(string: trackURI)
 
-        if (trackWithURI(convertedURI) != nil) {
-            print("same track with uri", convertedURI)
-        } else {
+        if (trackWithURI(convertedURI) == nil) {
         
             let countryCode = "US" // as per ISO 3166-1
             var albumImageURL: NSURL! = NSURL!()
@@ -163,7 +155,6 @@ class QueuedPlaylistDataModel {
     }
     
     func popPlayedTrack() {
-        print("popping track")
         
         // only one phone should be removing things from the DB
         if (self.isHostPhone) {

@@ -246,7 +246,11 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                                                             self.usernum = usercount
                                                         }
                                                         if let currentVetoCount = jsonResultPL!["current_veto_count"] as? NSInteger {
-                                                            if (currentVetoCount >= (self.usernum % 2)) {
+                                                            var limit = self.usernum/2
+                                                            if (limit == 0) { // make sure there is at least one veto required
+                                                                limit = 1
+                                                            }
+                                                            if (currentVetoCount >= limit ) {
                                                                 self.vetoLimitReached = true
                                                             }
                                                         }
@@ -257,6 +261,7 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                                                             }
                                                             for (var i = 0; i < tracks.count; i++){
                                                                 if let trackDict = tracks[i] as? NSDictionary {
+                                                                    
                                                                     let trackURI = trackDict["uri"] as! String
                                                                     let vetoCount = trackDict["veto_count"] as! Int
                                                                     
