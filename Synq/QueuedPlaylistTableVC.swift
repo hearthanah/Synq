@@ -27,7 +27,6 @@ class QueuedPlaylistTableVC: UITableViewController {
             if ( self.albumImage != nil ) {
                 trackImage = self.albumImage!
             }
-
             playlist?.pushNewTrack(newTrack!, trackImage: trackImage)
             
             self.tableView.reloadData()

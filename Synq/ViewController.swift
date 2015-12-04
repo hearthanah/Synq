@@ -14,9 +14,9 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     let kCallbackURL = "synq-app-login://callback"
     let kTokenSwapURL = "https://young-tundra-9211.herokuapp.com/swap"
     let kTokenRefreshURL = "https://young-tundra-9211.herokuapp.com/refresh"
-    
-    let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
-    let playlistName:String = "testPL2"
+    let playlistBaseURL = "https://limitless-wildwood-7949.herokuapp.com"
+    var playlistName = ""
+    var isValidName: Bool? = nil
 
     @IBOutlet weak var hideButton: UIView!
     @IBOutlet weak var hideButtonLogin: UIView!
@@ -39,9 +39,49 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         presentViewController(spotifyAuthenticationViewController, animated: false, completion: nil)
     }
     
-    @IBAction func joinPlaylistBtnAction(sender: AnyObject) {
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var playlistTextField: UITextField!
+    
+    @IBAction func createPlaylistBtnAction(sender: AnyObject) {
+        // make sure the user actually input a name
+        if (playlistTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "") {
+            errorLabel.text = "Please input a name for the playlist"
+        } else {
+            // check to see if there is already a playlist for this name
+            checkPlaylistName(playlistTextField.text!)
+            
+            if (self.isValidName == true) {
+                // there is a playlist with the same name, so set the label to say that
+                errorLabel.text = "There is already a playlist with that name"
+            } else {
+                // there is no playlist, so set the name and segue (which will create the playlist)
+                playlistName = playlistTextField.text!
+                performSegueWithIdentifier("CreatePlaylist", sender: self)
+            }
+        }
     }
     
+    @IBAction func joinPlaylistBtnAction(sender: AnyObject) {
+        //segue ID: JoinPlaylist
+        // make sure the user actually input a name
+        if (playlistTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) == "") {
+            errorLabel.text = "Please input a name for the playlist"
+        } else {
+            // check to see if there is already a playlist for this name
+            checkPlaylistName(playlistTextField.text!)
+            
+            if (self.isValidName == true) {
+                // there is a playlist with that name, so join it
+                playlistName = playlistTextField.text!
+                performSegueWithIdentifier("JoinPlaylist", sender: self)
+            } else {
+                // there is no playlist, so set the error label to say that
+                errorLabel.text = "There is no playlist with that name"
+            }
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +89,7 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         
         self.hideButton.layer.zPosition = 1
         self.hideButtonLogin.layer.zPosition = -1
+        errorLabel.text = ""
         
     }
     
@@ -59,12 +100,10 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
         loginWithSpotifySession(session)
     }
     
-    // TODO: - display login failures in the UI?
     func authenticationViewControllerDidCancelLogin(authenticationViewController: SPTAuthViewController!) {
         print("login cancelled")
     }
     
-    // TODO: - display login failures in the UI?
     func authenticationViewController(authenticationViewController: SPTAuthViewController!, didFailToLogin error: NSError!) {
         print("login failed")
         print(error)
@@ -73,6 +112,42 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     // SPTAudioStreamingPlaybackDelegate protocol methods
     
     private
+    
+    // Checks to see if there is a playlist in the DB with the given name
+    // Blocks until a response fromt the server is retrieved
+    func checkPlaylistName(name: String) {
+
+        self.isValidName = nil
+        
+        // Try checking the "version" of the playlist, to see if it exists
+        let requestURLString = self.playlistBaseURL + "/version?name=" + name
+        let requestURL = NSURL(string: requestURLString)
+        
+        let versionSession = NSURLSession.sharedSession()
+        let checkVersion = versionSession.dataTaskWithURL(requestURL!) { (data, response, error) -> Void in
+            if (error != nil) {
+                print("error checking playlist name")
+                self.isValidName = false
+            } else {
+                do {
+                    // get the result
+                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                    if jsonResult != nil {
+                        self.isValidName = true
+                    }
+                } catch {
+                        self.isValidName = false
+                }
+            }
+        }
+        checkVersion.resume()
+        
+        // Wait until the checkVersion task finishes before returning
+        while (self.isValidName == nil) {
+            sleep(1)
+        }
+
+    }
     
     func setupSpotifyPlayer() {
         player = SPTAudioStreamingController(clientId: spotifyAuthenticator.clientID) // can also use kClientID; they're the same value
@@ -130,44 +205,72 @@ class ViewController: UIViewController, SPTAuthViewDelegate, SPTAudioStreamingPl
     }
     
     func createRemotePlaylist() {
-        let postNameParam = "name=" + self.playlistName
+        let nameParam = "name=" + self.playlistName
         
         let requestURLString = self.playlistBaseURL + "/create"
         let requestURL = NSURL(string: requestURLString)
         
-        
         let request = NSMutableURLRequest(URL: requestURL!)
         request.HTTPMethod = "POST"
         
-        request.HTTPBody = postNameParam.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = nameParam.dataUsingEncoding(NSUTF8StringEncoding)
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
             if (error != nil) {
                 print("An error occured when creating the playlist: \n")
                 print(error)
-            } 
+            } else {
+                // now that the playlist has been created increment it's usernum
+                self.joinPlaylist()
+            }
         }
         task.resume()
 
     }
+    
+    // Increments the usernum of the playlist (for vetoing)
+    func joinPlaylist() {
+        let nameParam = "?name=" + self.playlistName
+        var patchURLString = self.playlistBaseURL + "/join"
+        patchURLString += nameParam
         
+        let patchURL = NSURL(string: patchURLString)
+        let patchRequest = NSMutableURLRequest(URL: patchURL!)
+        patchRequest.HTTPMethod = "PATCH"
+        
+        let patchSession = NSURLSession.sharedSession()
+        let patchTask = patchSession.dataTaskWithRequest(patchRequest) { (data, response, error) -> Void in
+            if (error != nil) {
+                print("An error occured when updating the usernum")
+                print(error)
+            }
+        }
+        patchTask.resume()
+    }
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "ShowActiveSongVC") {
+        if (segue.identifier == "CreatePlaylist") {
             let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
             
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
+            activeSongVC.playlistName = playlistName
+            activeSongVC.isHostPhone = true
             
             createRemotePlaylist()
-        } else if (segue.identifier == "JoinActiveSongVC") {
+            
+        } else if (segue.identifier == "JoinPlaylist") {
             let activeSongVC:ActiveSongVC = segue.destinationViewController as! ActiveSongVC
             
             activeSongVC.player = self.player
             activeSongVC.spotifyAuthenticator = self.spotifyAuthenticator
-            
+            activeSongVC.playlistName = playlistName
+            activeSongVC.isHostPhone = false
+            // The playlist already exists, so join the playlist
+            self.joinPlaylist()
         }
     }
 

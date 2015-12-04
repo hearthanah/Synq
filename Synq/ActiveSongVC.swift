@@ -16,18 +16,41 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     @IBOutlet weak var playBtnLabel: UILabel!
     @IBOutlet weak var playlistIdentifier: UILabel!
     
-    let playlistBaseURL = "https://polar-waters-5870.herokuapp.com"
-    let playlistName:String = "testPL2"
+    let playlistBaseURL = "https://limitless-wildwood-7949.herokuapp.com"
+    var playlistName:String = ""
     var versionStr:NSString = NSString()
+    var usernum: Int = 1
+    var currentSongVetoed: Bool = false
+    var vetoLimitReached: Bool = false
+    
+    var isHostPhone: Bool = true
 
-    
-    
     @IBAction func unwindToActiveSongVC(segue: UIStoryboardSegue) {
     }
     
     @IBAction func vetoBtnAction(sender: AnyObject) {
-        // stop the player so that removing the song works properly
-        player!.stop(nil)
+        if (!currentSongVetoed) {
+            self.currentSongVetoed = true
+            
+            //TODO: - send the veto call
+            let nameParam = "?name=" + self.playlistName
+            let patchURLString = self.playlistBaseURL + "/veto" + nameParam
+            
+            let patchURL = NSURL(string: patchURLString)
+            let patchRequest = NSMutableURLRequest(URL: patchURL!)
+            patchRequest.HTTPMethod = "PATCH"
+            
+            let patchSession = NSURLSession.sharedSession()
+            let patchTask = patchSession.dataTaskWithRequest(patchRequest) { (data, response, error) -> Void in
+                if (error != nil) {
+                    print("An error occured when updating the veto count")
+                    print(error)
+                    self.currentSongVetoed = false
+                }
+            }
+            patchTask.resume()
+
+        }
     }
     
     @IBAction func addBtnAction(sender: AnyObject) {
@@ -40,8 +63,6 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         }
     }
     
-    let isHostPhone: Bool = true
-
     var player:SPTAudioStreamingController? = nil
     var spotifyAuthenticator:SPTAuth? = nil
     let playlist:QueuedPlaylistDataModel? = QueuedPlaylistDataModel()
@@ -51,8 +72,11 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         super.viewDidLoad()
         
         playlist!.setSongVC(self)
+        playlist!.setName(self.playlistName)
+        playlist?.setIsHostPhone(self.isHostPhone)
         
         playBtnLabel.text = "Pause"
+        playlistIdentifier.text = self.playlistName
 
         if player != nil {
             player?.playbackDelegate = self
@@ -85,8 +109,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didChangeToTrack trackMetadata: [NSObject : AnyObject]!) {
         if player!.currentTrackURI != nil {
             updateImageAndLabelsForTrackURI(player!.currentTrackURI, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
+            self.currentSongVetoed = false
         }
-        //print("CHANGED TRACK")
     }
     
     // When the track stops start playing the next track
@@ -107,7 +131,8 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
         if (isHostPhone) {
             self.player?.playURIs([uri], withOptions: nil, callback: nil)
         }
-        
+        // reset the veto count
+        self.vetoLimitReached = false
         // All phones need to update the image and labels
         updateImageAndLabelsForTrackURI(uri, imageView: self.image, artistLabel: self.artistLabel, trackLabel: self.trackLabel)
     }
@@ -157,15 +182,17 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
     
     @IBAction func setPlaySatus(sender: AnyObject) {
     
-        if (self.player?.isPlaying == true) {
+        if (self.isHostPhone) {
+            if (self.player?.isPlaying == true) {
             
-            self.player?.setIsPlaying(false, callback: nil)
-            playBtnLabel.text = "Play"
-        }else{
+                self.player?.setIsPlaying(false, callback: nil)
+                playBtnLabel.text = "Play"
+            }else{
 
-            self.player?.setIsPlaying(true, callback: nil)
-            playBtnLabel.text = "Pause"
+                self.player?.setIsPlaying(true, callback: nil)
+                playBtnLabel.text = "Pause"
             
+            }
         }
     }
 
@@ -196,9 +223,9 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                     } else {
                         do {
                             // get the result
-                            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
-                            if jsonResult != nil {
-                                if let date = jsonResult!["date"] as? NSString {
+                            let jsonResultV = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                            if jsonResultV != nil {
+                                if let date = jsonResultV!["date"] as? NSString {
                                     if self.versionStr != date {
                                         self.versionStr = date
                                         // Playlist has been updated so pull it
@@ -213,12 +240,22 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                                             } else {
                                                 do {
                                                     // get the result
-                                                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
-                                                    if jsonResult != nil {
-                                                        if let tracks = jsonResult!["tracks"] as? NSArray {
+                                                    let jsonResultPL = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                                                    if jsonResultPL != nil {
+                                                        if let usercount = jsonResultPL!["usernum"] as? NSInteger {
+                                                            self.usernum = usercount
+                                                        }
+                                                        if let currentVetoCount = jsonResultPL!["current_veto_count"] as? NSInteger {
+                                                            if (currentVetoCount >= (self.usernum % 2)) {
+                                                                self.vetoLimitReached = true
+                                                            }
+                                                        }
+                                                        if let tracks = jsonResultPL!["tracks"] as? NSArray {
+                                                            if (!self.isHostPhone && (tracks.count < self.playlist?.count())) {
+                                                                // a track was removed from the remote playlist, so remove it from the current one
+                                                                self.removeCurrentTrackClient()
+                                                            }
                                                             for (var i = 0; i < tracks.count; i++){
-                                                                //print ("track" , i)
-                                                                //print (tracks[i])
                                                                 if let trackDict = tracks[i] as? NSDictionary {
                                                                     let trackURI = trackDict["uri"] as! String
                                                                     let vetoCount = trackDict["veto_count"] as! Int
@@ -227,9 +264,14 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                                                                 }
                                                             }
                                                         }
+                                                        // if the veto counter got too high, remove the current track
+                                                        if (self.isHostPhone && self.vetoLimitReached) {
+                                                            self.removeCurrentTrack()
+                                                        }
                                                     }
                                                 } catch {
                                                     print("error converting json for playlist")
+                                                    self.versionStr = ""
                                                 }
                                             }
                                         }
@@ -246,6 +288,35 @@ class ActiveSongVC: UIViewController, SPTAudioStreamingPlaybackDelegate {
                 checkVersion.resume()
                 // wait 4 seconds before checking again
                 sleep(4)
+            }
+        }
+    }
+    
+    func removeCurrentTrack() {
+        if (self.vetoLimitReached && self.isHostPhone) {
+            self.currentSongVetoed = false
+            self.vetoLimitReached = false
+            
+            // Stop the player which will cause the current song to be removed
+            if (player?.isPlaying == true) {
+                player!.stop(nil)
+            }
+        }
+    }
+    func removeCurrentTrackClient () {
+        if (!self.isHostPhone)  {
+            self.currentSongVetoed = false
+            self.vetoLimitReached = false
+            self.playlist?.clientRemoveTrack()
+            
+            let spotifyURI:NSURL! = playlist!.getURIForNextTrack()
+            if (spotifyURI == nil) {
+                // if there isn't another track to be played inform the user
+                self.image.image = UIImage()
+                self.artistLabel.text = "No song in queue"
+                self.trackLabel.text = "No song in queue"
+            } else {
+                changeToSongWithURI(spotifyURI)
             }
         }
     }
