@@ -75,8 +75,9 @@ Matthew Carpenter:
 -Set up app to use an app on Heroku instead of on localhost using https://github.com/simontaen/SpotifyTokenSwap.git
 -Fixed linker error when trying to build on actual phone by disabling ENABLE_BITCODE setting in Synq project in Xcode.
 -Set up ATS in plist to allow InsecureHTTPLoads from cloudfront.net as specified by the spotify employee here: https://github.com/spotify/ios-sdk/issues/417
+
 Hanah Luong:
 -Song Preview View capabiliies from Search Results View and previously Queued songs view.
--In Class Presentation. This can be found in out Repo. Credits to PowToons.com.
+-In Class Presentation. Credits to PowToons.com web application.
 
 RELEASE: tba
